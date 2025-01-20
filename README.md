@@ -1,1 +1,0 @@
-# splanard.github.io
