@@ -85,3 +85,5 @@ J'y ai passé un peu plus de temps que je ne l'espérais, mais ça fonctionne&nb
 Bon, j'ai fait des concessions sur l'intelligence de l'IA : elle joue au hasard 🙄. Mais en voyant les heures de travail s'écouler, je me suis dit que développer une IA plus performante pour un jeu jetable (parce qu'on n'est toujours pas à la cible _Triple Triad_&nbsp;!) était une perte de temps.
 
 J'ai donc un jeu en ligne, où un utilisateur peut jouer en plusieurs tours contre une IA : objectif atteint&nbsp;!&nbsp;✅
+
+<a class="navigation next" href="{% link _posts/2023/2023-09-26-developper-jeu-mode-agile-episode-4.md %}">Développer un jeu en mode agile - Épisode 4</a>

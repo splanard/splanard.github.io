@@ -70,3 +70,5 @@ Et voilà le résultat&nbsp;:
 ![](/assets/images/pokemon-triad/pokemon-triad-areas.png)
 
 Les pokémons rencontrés varient d'une zone à l'autre, rendant les parties légèrement différentes. Mais toujours pas très difficiles, pour être honnête...&nbsp;😅
+
+<a class="navigation next" href="{% link _posts/2023/2023-12-17-developper-jeu-mode-agile-episode-7.md %}">Développer un jeu en mode agile - Épisode 7</a>

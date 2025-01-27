@@ -100,8 +100,12 @@ Il pourrait aussi être intéressant de **trouver un(e) graphiste ou illustratri
 
 Et enfin, il faudrait que je travaille un peu sur l'**automatisation du process de versionnement et de déploiement de l'application**. Maintenant qu'une version 1 va être publiée, et en particulier si je commence à diffuser le lien, il faudra que je sois plus rigoureux et méthodique dans la publication de nouvelles fonctionnalités.
 
-Dans tous les cas, **l'objectif initial de cette aventure est atteint**&nbsp;: avec les bonnes méthodes de travail, sur un sujet qui me plaît, je suis capable d'investir suffisamment de temps et d'énergie (même en parallèle d'une activité professionnelle soutenue), **je suis capable de développer un jeu**.&nbsp;✅
+# Objectif atteint
 
-À lui seul, ce constat m'apporte déjà énormément.
+Dans tous les cas, **l'objectif initial de cette aventure est atteint**&nbsp;: avec les bonnes méthodes de travail, sur un sujet qui me plaît, je suis capable d'investir suffisamment de temps et d'énergie (même en parallèle d'une activité professionnelle soutenue), pour créer un jeu.&nbsp;✅
 
-La suite au prochain épisode&nbsp;!&nbsp;😉
+À lui seul, ce constat m'apporte déjà énormément&nbsp;!
+
+Cela ouvre peut-être la voie à un autre projet, plus ambitieux, un jour. Ou simplement à poursuivre celui-ci pour le moment.
+
+La suite, peut-être, au prochain épisode...&nbsp;😉

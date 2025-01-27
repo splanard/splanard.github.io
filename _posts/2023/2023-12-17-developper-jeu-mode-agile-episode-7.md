@@ -114,3 +114,5 @@ J'ai marqué avec un tag `mvp` certains éléments de la liste qui me paraîssen
 - **Ajouter des liens de partage via les réseaux sociaux**, pour aider le jeu à se faire connaître sur le net.
 
 Il en reste du travail...&nbsp;😥
+
+<a class="navigation next" href="{% link _posts/2024/2024-05-29-developper-jeu-mode-agile-episode-8.md %}">Développer un jeu en mode agile - Épisode 8</a>

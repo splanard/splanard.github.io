@@ -101,3 +101,5 @@ Et voilà ce que ça donne après `1h` de boulot.
 On n'est pas encore sur de l'appli mobile professionnelle (je pense qu'à un moment, si j'arrive à amener le gameplay à un niveau suffisant pour commencer à diffuser le lien du jeu à droite à gauche, il faudra que je me fasse aider sur le design. Clairement, je bricole dans ce domaine...), mais je suis satisfait du gain pour le temps passé&nbsp;!
 
 > Quantité de travail totale : 23h
+
+<a class="navigation next" href="{% link _posts/2023/2023-10-30-developper-jeu-mode-agile-episode-6.md %}">Développer un jeu en mode agile - Épisode 6</a>

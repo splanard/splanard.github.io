@@ -24,4 +24,17 @@
     margin-top: -10px;
     text-align: center;
   }
+  a.navigation {
+    display: block;
+
+    &.next {
+      text-align: right;
+
+      &::after {
+        content: "\226B";
+        display: inline-block;
+        padding-left: 4px;
+      }
+    }
+  }
 }

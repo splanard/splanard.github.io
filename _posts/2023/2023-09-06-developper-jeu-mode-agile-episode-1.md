@@ -62,3 +62,5 @@ _Une recherche Internet m'apprendra par la suite que je n'étais pas le premier 
 > Quantité de travail : difficile à évaluer.
 
 _Il s'est écoulé peut-être un mois entre l'idée originelle et le moment où j'écris ces lignes. J'y ai réfléchi lorsque je faisais autre chose (conduire, me doucher, manger, marcher, dormir...). Il est donc très difficile d'évaluer le temps que cela m'a pris._
+
+<a class="navigation next" href="{% link _posts/2023/2023-09-11-developper-jeu-mode-agile-episode-2.md %}">Développer un jeu en mode agile - Épisode 2</a>

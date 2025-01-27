@@ -102,3 +102,5 @@ L'IA adverse n'est toujours pas d'une efficacité exceptionnelle, mais elle ne j
 Mais pas trop&nbsp;!! Car **pour une expérience utilisateur réussie, il faut des IA avec des failles&nbsp;!** Pour que le joueur prenne satisfaction à gagner des parties. Si je lui colle dès les premières parties une IA qui fait des prévisions de jeu sur plusieurs tours et optimise la pose pour cacher les valeurs faibles contre les bords, le joueur va se prendre raclée sur raclée jusqu'à l'en dégoûter du jeu&nbsp;😅. L'expérience utilisateur s'arrêterait alors assez rapidement... Il est donc fort probable que je garde cette première IA (avec peut-être de très légères améliorations) pour les premiers niveaux de difficulté du jeu.
 
 D'autant plus que, selon le set de cartes que reçoit l'adversaire, c'est déjà suffisamment compliqué de gagner comme ça&nbsp;! 😓
+
+<a class="navigation next" href="{% link _posts/2023/2023-09-29-developper-jeu-mode-agile-episode-5.md %}">Développer un jeu en mode agile - Épisode 5</a>

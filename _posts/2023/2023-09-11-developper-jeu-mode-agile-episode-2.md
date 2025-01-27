@@ -102,3 +102,5 @@ Et non, pour la pierre, je n'ai rien trouvé d'autre dans la bibliothèque d'emo
 J'ai un jeu, il fonctionne&nbsp;: premier objectif atteint&nbsp;! ✅
 
 > Quantité de travail : 30' (total : 45')
+
+<a class="navigation next" href="{% link _posts/2023/2023-09-15-developper-jeu-mode-agile-episode-3.md %}">Développer un jeu en mode agile - Épisode 3</a>
