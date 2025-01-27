@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Développer un jeu en mode agile - Épisode 4"
-date: 2025-01-01 09:00:00 +0100
+date: 2023-09-26 09:00:00 +0100
 tags: article dev game-design
 ---
 
@@ -64,7 +64,7 @@ La précédente marche était haute. 😰
 
 6h de travail, dans un contexte professionnel, ce n'est pas grand chose. À peine une journée de travail.
 
-Sauf que, dans ce cas, je ne suis pas dans un contexte professionnel. Chaque heure de développement passée sur ce jeu, je la fais en plus de ma journée pro&nbsp;: parfois sur ma pause déjeuner, mais le plus souvent le soir/la nuit. Donc, selon ma motivation et les contraintes à la maison, 6h peuvent s'étaler sur une semaine...
+Sauf que, dans ce cas, je ne suis pas dans un contexte professionnel. Chaque heure de développement passée sur ce jeu, je la fais en plus de ma journée de travail&nbsp;: parfois sur ma pause déjeuner, mais le plus souvent le soir/la nuit. Donc, selon ma motivation et les contraintes à la maison, 6h peuvent s'étaler sur une semaine...
 
 Une semaine pour voir quelque chose de nouveau (et pas transcendant qui plus est 😅), c'est long&nbsp;! Le découragement peut se pointer à l'improviste, n'importe quand. Un petit _coup de flemme_ suffit à lui ouvrir la porte&nbsp;😈.
 

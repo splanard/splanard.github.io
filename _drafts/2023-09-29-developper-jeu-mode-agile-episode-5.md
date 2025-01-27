@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Développer un jeu en mode agile - Épisode 5"
-date: 2025-01-01 09:00:00 +0100
+date: 2023-09-29 09:00:00 +0100
 tags: article dev game-design
 ---
 
