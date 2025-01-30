@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Développer un jeu en mode agile - Épisode 8"
+title: "Développer un jeu en mode agile - Épisode 8 : MVP"
 date: 2024-05-29 09:00:00 +0100
 tags: article dev game-design
+category: pokemon-triad
 ---
 
 # Minimum Viable Product&nbsp;!
@@ -21,7 +22,7 @@ Voici toutes les fonctionnalités sur lesquelles j'ai travaillé ces 2 derniers 
 
 - Quelques **améliorations mineures de l'interface utilisateur**, pour rendre l'application plus agréable à l'oeil et ergonomique. C'est toujours un design très minimaliste car, clairement, je ne suis pas _designer_ 😅. Mais ça me convient pour le moment.
 
-- J'ai ajouté encore pas mal de contenu : des **nouvelles zones**, des **nouvelles cartes**. Et j'ai partiellement industrialisé l'ajout de contenu, ce qui me permettra d'être plus efficace à l'avenir (parce que rien que dans les premières générations du jeu, il y en a 251 des pokémons, répartis dans des dizaines de zones différentes... si j'y passe ne serait-ce 15 min pour chaque, ça fait... _beaucoup trop&nbsp;!!!_).
+- J'ai ajouté encore pas mal de contenu : des **nouvelles zones**, des **nouvelles cartes**. Et j'ai partiellement industrialisé l'ajout de contenu, ce qui me permettra d'être plus efficace à l'avenir (rien que dans les premières générations du jeu, il y a 251 pokémons, répartis dans des dizaines de zones différentes... si j'y passe ne serait-ce 15 min pour chaque, ça fait... _beaucoup trop&nbsp;!!!_).
 
 - Un écran pour **visualiser sa collection de cartes**&nbsp;! C'est encore loin d'être parfait, et on pourrait y ajouter plein de fonctionnalités. Mais il a le mérite d'exister.
 
@@ -51,7 +52,7 @@ Je vous _sploil_ le constat&nbsp;: la liste n'est pas identique.&nbsp;😊
 
 Certaines des fonctionnalités qui me paraîssaient essentielles à l'époque n'ont pas été implémentées. D'autres, non prévues, ont été ajoutées en cours de route.
 
-Et c'est là, selon moi que réside la grande **force de l'agilité**&nbsp;! Plutôt que de suivre un plan, une liste de fonctionnalités à réaliser, je me suis posé la question à chaque instant&nbsp;: **qu'est-ce qui a le plus de sens, _maintenant_**&nbsp;? Que puis-je ajouter _maintenant_ pour maximiser l'expérience utilisateur ou apporter de la valeur au projet&nbsp;? Sachant que _conserver ma motivation_ est une valeur en soit dans le projet. Donc, parfois, implémenter une fonctionnalité qui ne servait à rien, mais qui me faisait plaisir, était la priorité du moment.
+Et c'est là, selon moi que réside la grande **force de l'agilité**&nbsp;! Plutôt que de suivre un plan, une liste de fonctionnalités à réaliser, je me suis posé la question à chaque instant&nbsp;: **qu'est-ce qui a le plus de sens, _maintenant_&nbsp;?** Que puis-je ajouter _maintenant_ pour maximiser l'expérience utilisateur ou apporter de la valeur au projet&nbsp;? Sachant que _conserver ma motivation_ est une valeur en soit dans ce projet. Donc, parfois, implémenter une fonctionnalité qui ne servait à rien, mais qui me faisait plaisir, était la priorité du moment.
 
 Mon backlog n'est finalement qu'un pense-bête, un aide-mémoire dans lequel je stocke des idées. Mais je le repriorise en permanence. Et si, à un moment donné, ce qui a le plus de sens à mes yeux c'est une fonctionnalité qui n'est pas tracée dedans, tant pis pour le backlog, je la fais quand même&nbsp;!
 
@@ -71,16 +72,16 @@ L'application est "en prod", au sens où elle est accessible en ligne, depuis n'
 
 Le fait de voir les choses avancer, de pouvoir systématiquement déployer et utiliser le résultat sur mon téléphone est **incroyablement stimulant**&nbsp;! Je vois immédiatement le résultat. Je peux m'amuser avec l'application, la tester un peu en conditions réelles. Je peux également la montrer à d'autres personnes, pour avoir leur opinion, voir s'ils arrivent à l'utiliser (ce qui m'a très rapidement amené à constater que le tutoriel était indispensable pour le MVP&nbsp;😅).
 
-J'ai donc très rapidement d'autres idées d'améliorations (je suis mon propre _feedback_ utilisateur, en quelques sorte).
+Utiliser moi-même l'application en situation réelle fait que j'ai très rapidement d'autres idées d'améliorations (je suis mon propre _feedback_ utilisateur, en quelques sorte).
 
 J'alterne entre des phases où&nbsp;:
 
 - je remplis mon backlog de toute les idées d'amélioration qui me viennent
-- je priorise l'existant&nbsp;: qu'est-ce qui apportera le plus de valeur à l'utilisateur&nbsp;?
+- je priorise l'existant&nbsp;: qu'est-ce qui apportera le plus de valeur à un joueur&nbsp;?
 - je traite les tâches prioritaires
 - je déploie
 
-Et j'itère comme ça en circuit court. C'est très confortable comme façon de travailler.
+Et j'itère comme cela, en circuit court. C'est très confortable comme façon de travailler.
 
 # Quelle suite ?
 

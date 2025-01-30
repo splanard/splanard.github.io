@@ -4,6 +4,12 @@
 // @see https://github.com/jekyll/minima/tree/v2.5.1?tab=readme-ov-file#customization
 @import "minima";
 
+.post-header {
+  .post-title {
+    line-height: 1.2;
+  }
+}
+
 .post-content {
   h1 {
     font-size: 28px;

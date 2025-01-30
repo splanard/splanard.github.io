@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Développer un jeu en mode agile - Épisode 4"
+title: "Développer un jeu en mode agile - Épisode 4 : Première version fonctionnelle"
 date: 2023-09-26 09:00:00 +0100
 tags: article dev game-design
+category: pokemon-triad
 ---
 
 # On attaque les choses sérieuses !
@@ -26,14 +27,14 @@ Je sais déjà qu'il y a pas mal de travail : modélisation des cartes, effet de
 
 Je n'avais pas anticipé que passer d'un morpion au _Triple Triad_ me prendrait autant de temps...
 
-Pour le moment, je n'ai pas fait l'effort de créer des cartes originales&nbsp;: je me suis contenté de reprendre les valeurs figurant sur les 11 cartes de niveau 1 du jeu original dans _Final Fantasy VIII_ (merci les Wiki qui traînent depuis 20 ans 😅).
+Pour le moment, je n'ai pas fait l'effort de créer des cartes originales&nbsp;: je me suis contenté de reprendre les valeurs figurant sur les 11 cartes de niveau 1 du jeu original dans _Final Fantasy VIII_ (merci les wikis qui traînent en ligne depuis 20 ans&nbsp;😅).
 
 Ce qui m'a pris le plus de temps&nbsp;:
 
-- Pour le moteur de jeu, simuler des parties pour les tests unitaires. Je ne suis d'ailleurs pas très satisfait de la lisibilité du résultat. Il faudra que j'améliore ça.
-- Pour l'affichage, l'agencement des cartes sur l'écran, afin qu'on puisse voir à la fois le plateau et les mains des 2 joueurs sur le même écran. Faire en sorte que les cartes restent bien carrées ET responsives m'a également retardé un peu.
+- Pour le moteur de jeu, simuler des parties dans les tests unitaires. Je ne suis d'ailleurs pas très satisfait de la lisibilité du résultat. Il faudra que j'améliore ça.
+- Pour l'affichage, l'agencement des cartes sur l'écran, afin qu'on puisse voir à la fois le plateau et les _mains_ des 2 joueurs sur le même écran. Faire en sorte que les cartes restent bien carrées ET responsives m'a également retardé un peu.
 
-J'ai à nouveau fait des concessions : mon IA joue toujours au hasard, par exemple&nbsp;😫. Mais, après 6h de travail, il fallait que je sorte quelque chose...
+J'ai à nouveau fait des concessions&nbsp;: mon IA joue toujours au hasard, par exemple&nbsp;😫. Mais, après 6h de travail, il fallait que je sorte quelque chose...
 
 Il y a énormément de choses améliorables&nbsp;! J'ai déjà en tête une liste conséquente. Entre autres&nbsp;:
 
@@ -64,17 +65,17 @@ La précédente marche était haute. 😰
 
 6h de travail, dans un contexte professionnel, ce n'est pas grand chose. À peine une journée de travail.
 
-Sauf que, dans ce cas, je ne suis pas dans un contexte professionnel. Chaque heure de développement passée sur ce jeu, je la fais en plus de ma journée de travail&nbsp;: parfois sur ma pause déjeuner, mais le plus souvent le soir/la nuit. Donc, selon ma motivation et les contraintes à la maison, 6h peuvent s'étaler sur une semaine...
+Sauf que, dans ce cas, je ne suis pas dans un contexte professionnel&nbsp;! Chaque heure de développement passée sur ce jeu, je la fais en plus de ma journée de travail&nbsp;: parfois sur ma pause déjeuner, mais le plus souvent le soir/la nuit. Selon la fatigue, ma motivation ou les contraintes à la maison, 6h de dev effectif peuvent s'étaler sur une semaine...
 
-Une semaine pour voir quelque chose de nouveau (et pas transcendant qui plus est 😅), c'est long&nbsp;! Le découragement peut se pointer à l'improviste, n'importe quand. Un petit _coup de flemme_ suffit à lui ouvrir la porte&nbsp;😈.
+Une semaine pour voir quelque chose de nouveau (et pas transcendant qui plus est&nbsp;😅), c'est long&nbsp;! Le découragement peut se pointer à l'improviste, n'importe quand. Un petit _coup de flemme_ suffit à lui ouvrir la porte&nbsp;😈.
 
-Je décide donc que les étapes suivantes seront petites. Les améliorations possibles ne manquent pas (voir plus haut). Je pioche donc dedans celles qui me plaisent le plus et/ou me prennent le moins de temps. Le but est de me re-booster en livrant de la valeur très rapidement.
+Je décide donc que les étapes suivantes seront petites. Les améliorations possibles ne manquent pas (voir plus haut). Je pioche dedans celles qui me plaisent le plus et/ou me prennent le moins de temps. Le but est de me re-booster en livrant de la valeur très rapidement.
 
 🕐... 🕑... 🕒...
 
 Et voilà le résultat&nbsp;:
 
-- Quelques améliorations techniques (Clean Code, refactoring)&nbsp;: `2 sessions de 1h`
+- Quelques améliorations techniques (clean code, refactoring)&nbsp;: `2 sessions de 1h`
 - Légère amélioration de l'UI (affichage des cartes, identification des "mains" des 2 joueurs, ajout d'un titre)&nbsp;: `1h`
 - Ajout du thème&nbsp;: `2h`
 - Création d'un set de cartes _starter_ pour l'utilisateur et d'un set de cartes aléatoire pour l'IA&nbsp;: `30'`
@@ -91,16 +92,16 @@ Mais ça commence à ressembler à quelque chose&nbsp;!
 
 ![](/assets/images/pokemon-triad/pokemon-triad.png)
 
-Hein&nbsp;? Oui...&nbsp;?
+Hein&nbsp;? Oui...&nbsp;?&nbsp;🥺
 
 Bon, OK. On est encore bien loin de la cible que j'ai en tête. Surtout que, depuis que je me suis replongé dans les descriptifs des jeux originaux, que je me suis rappelé des personnages partiellement oubliés, les idées de systèmes de jeu et de scénarisation fusent dans ma tête à la moindre occasion.&nbsp;✨
 
 Mais ça progresse. Et c'est ça qui compte&nbsp;!
 
-L'IA adverse n'est toujours pas d'une efficacité exceptionnelle, mais elle ne joue plus complètement au hasard. Elle calcule le nombre de cartes qu'elle est capable de retourner avec chacune des cartes qu'elle a encore en main. Puis elle choisit la carte et l'emplacement qui lui permettent de retourner un maximum de cartes advserses. Bon, à nombre de retournements égal, c'est du hasard... J'améliorerai encore cela à l'avenir.
+L'IA adverse n'est toujours pas d'une efficacité exceptionnelle, mais elle ne joue plus complètement au hasard. Elle calcule le nombre de cartes qu'elle est capable de retourner avec chacune des cartes qu'elle a encore en main. Puis elle choisit la carte et l'emplacement qui lui permettent de retourner un maximum de cartes advserses. À nombre de retournements égal, c'est du hasard... J'améliorerai encore cela à l'avenir.
 
-Mais pas trop&nbsp;!! Car **pour une expérience utilisateur réussie, il faut des IA avec des failles&nbsp;!** Pour que le joueur prenne satisfaction à gagner des parties. Si je lui colle dès les premières parties une IA qui fait des prévisions de jeu sur plusieurs tours et optimise la pose pour cacher les valeurs faibles contre les bords, le joueur va se prendre raclée sur raclée jusqu'à l'en dégoûter du jeu&nbsp;😅. L'expérience utilisateur s'arrêterait alors assez rapidement... Il est donc fort probable que je garde cette première IA (avec peut-être de très légères améliorations) pour les premiers niveaux de difficulté du jeu.
+Mais pas trop&nbsp;!! Car **pour une expérience utilisateur réussie, il faut des IA avec des failles&nbsp;!** Il faut que le joueur prenne satisfaction à gagner des parties. Si je lui oppose, dès les premières parties, une IA qui fait des simulations sur plusieurs tours et optimise la pose pour cacher les valeurs faibles des cartes contre les bords de la grille, le joueur va prendre raclée sur raclée jusqu'à l'en dégoûter du jeu&nbsp;😅. L'expérience utilisateur s'arrêterait alors assez rapidement... Il est donc fort probable que je garde cette première IA (avec peut-être de très légères améliorations) pour les premiers niveaux de difficulté du jeu.
 
-D'autant plus que, selon le set de cartes que reçoit l'adversaire, c'est déjà suffisamment compliqué de gagner comme ça&nbsp;! 😓
+D'autant plus que, selon le set de cartes que reçoit l'adversaire, c'est déjà suffisamment compliqué de gagner comme ça&nbsp;!&nbsp;😓
 
-<a class="navigation next" href="{% link _posts/2023/2023-09-29-developper-jeu-mode-agile-episode-5.md %}">Développer un jeu en mode agile - Épisode 5</a>
+<a class="navigation next" href="{% link _posts/2023/2023-09-29-developper-jeu-mode-agile-episode-5.md %}">Lire la suite</a>

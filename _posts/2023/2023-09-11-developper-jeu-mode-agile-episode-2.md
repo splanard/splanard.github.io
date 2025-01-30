@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Développer un jeu en mode agile - Épisode 2"
+title: "Développer un jeu en mode agile - Épisode 2 : Par où commencer ?"
 date: 2023-09-11 09:00:00 +0100
 tags: article dev game-design
+category: pokemon-triad
 ---
 
 # Par où commencer ?
@@ -23,17 +24,17 @@ Je dois me souvenir que la démotivation et l'égarement sont mes ennemis.
 
 Mon expérience professionnelle me l'a démontrée&nbsp;: pour aller loin, il faut procéder par étapes. Par **_petites_** étapes, de préférence. Et avec ma liste de tâches ci-dessus, je pars déjà beaucoup trop loin. ❌
 
-Donc, quelles sont **_réellement_** les premières étapes de mon projet&nbsp;?
+Donc, je reprends... quelles sont **_réellement_** les premières étapes de mon projet&nbsp;?
 
 - Un jeu à 2 joueurs.
 - Un gagnant, un perdant. Donc des conditions de victoire.
-- Comme je ne veux pas me lancer dans un mode multi-joueurs pour le moment (beaucoup trop de travail, je le sais d'avance sans avoir besoin de chercher), ce sera un jeu solo. Donc l'adversaire devra être une IA.
+- Comme je ne veux pas me lancer dans un mode multi-joueurs pour le moment (beaucoup trop d'embêtements, je le sens d'avance sans avoir besoin de chercher), ce sera un jeu solo. Donc l'adversaire devra être une IA.
 
 Quel est le jeu le plus simple que je connaisse qui implique 2 joueurs&nbsp;?
 
-_Pierre, feuille, ciseaux_ !
+_Pierre, feuille, ciseaux_&nbsp;!
 
-La première chose que je dois développer est donc un jeu "_pierre, feuille, ciseaux_", avec un joueur contrôlé par l'utilisateur et l'autre piloté par une IA (au moins, l'IA ne sera pas trop difficile à développer&nbsp;: un choix aléatoire parmi les trois possibles fera très bien l'affaire 😝).
+Voilà quelque chose de plus raisonnable. La première chose que je dois développer est donc un jeu "_pierre, feuille, ciseaux_", avec un joueur contrôlé par l'utilisateur et l'autre piloté par une IA (au moins, l'IA ne sera pas trop difficile à développer&nbsp;😝).
 
 > Quantité de travail : difficile à évaluer
 
@@ -41,15 +42,15 @@ _Là encore, cette réflexion s'est faite petit à petit depuis que l'idée m'es
 
 # Pierre, feuille, ciseaux !
 
-Je veux aller vite, je veux faire simple. Je vais donc utiliser des outils et technos que je connais et maîtrise déjà. 👍
+Je veux aller vite, je veux faire simple. Je vais donc utiliser des outils et technos que je connais et maîtrise déjà.&nbsp;👍
 
 Il se trouve que je suis développeur web, donc le jeu prendra la forme d'un site web.
 
-Pour le moment, je n'ai aucun intérêt à avoir un serveur, une base de données, etc. Je veux simplement créer un mini-jeu qui soit utilisable en ligne. Je n'ai donc besoin que d'un site purement web&nbsp;: HTML, Javascript, CSS.
+Pour le moment, je n'ai aucun intérêt à avoir un serveur, une base de données, etc. Je veux simplement créer un mini-jeu qui soit utilisable en ligne. Je n'ai donc besoin que d'un site purement web&nbsp;: HTML, JavaScript, CSS.
 
-Et il se trouve que je maîtrise assez bien le framework Vue.js. J'ai l'habitude de travailler avec, donc je ne perdrai pas de temps sur des questions "_comment faire&nbsp;?_" et je pourrai me focaliser sur "_quoi faire&nbsp;?_".
+Et il se trouve que je maîtrise bien le framework Vue.js. J'ai l'habitude de travailler avec, donc je ne perdrai pas de temps sur des questions "_comment faire&nbsp;?_" et je pourrai me focaliser sur "_quoi faire&nbsp;?_".
 
-C'est parti ! 🔥
+C'est parti&nbsp;!&nbsp;🔥
 
 Il y a quelques mois, je m'étais créé un starter Vue.js 3 (avec TypeScript)&nbsp;: un projet déjà pré-configuré selon mes préférences, prêt à l'emploi. J'exporte cette coquille vide dans mon tout nouveau projet `pokemon-triad`, je mets rapidement à jour les dépendances obsolètes.
 
@@ -61,7 +62,7 @@ J'attaque ensuite le développement du jeu en lui-même.
 
 Je ne perds pas de temps sur les graphismes pour le moment&nbsp;:
 
-- D'une part, ce jeu est une étape très temporaire&nbsp;: le jeu _pierre, feuille, ciseaux_ n'est pas du tout l'objectif final. Donc peu importe si le design est minimaliste. L'important est d'avoir quelque chose qui fonctionne, rapidement&nbsp;!
+- D'une part, ce jeu est une étape très temporaire&nbsp;: le jeu _pierre, feuille, ciseaux_ n'est pas du tout l'objectif final. Donc peu importe si le design est minimaliste. L'important est d'avoir quelque chose qui fonctionne, rapidement.
 
 - D'autre part, je préfère me focaliser d'abord sur le système de jeu, puis retravailler les graphismes. Un jeu moche, qui fonctionne, on peut s'en servir. Une interface graphique jolie mais qui ne fait rien... eh bah ça ne sert à rien&nbsp;!
 
@@ -103,4 +104,4 @@ J'ai un jeu, il fonctionne&nbsp;: premier objectif atteint&nbsp;! ✅
 
 > Quantité de travail : 30' (total : 45')
 
-<a class="navigation next" href="{% link _posts/2023/2023-09-15-developper-jeu-mode-agile-episode-3.md %}">Développer un jeu en mode agile - Épisode 3</a>
+<a class="navigation next" href="{% link _posts/2023/2023-09-15-developper-jeu-mode-agile-episode-3.md %}">Lire la suite</a>

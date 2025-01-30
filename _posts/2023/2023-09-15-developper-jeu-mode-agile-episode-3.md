@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Développer un jeu en mode agile - Épisode 3"
+title: "Développer un jeu en mode agile - Épisode 3 : Première mise en prod"
 date: 2023-09-15 09:00:00 +0100
 tags: article dev game-design
+category: pokemon-triad
 ---
 
 # Et maintenant... ?
@@ -11,7 +12,7 @@ Bon, en 45 minutes, j'ai un jeu _pierre, feuille, ciseaux_ qui fonctionne. C'est
 
 Le premier contrat que je m'étais fixé est rempli : un jeu solo, sur navigateur, où l'utilisateur joue contre une IA.
 
-Je pourrais donc attaquer la création du jeu final, maintenant... non&nbsp;?
+Je pourrais donc attaquer la création du jeu final, maintenant... non&nbsp;?&nbsp;🤠
 
 Non. Pas encore.
 
@@ -21,7 +22,7 @@ D'autre part, il me manque encore un élément essentiel&nbsp;!
 
 Ok, j'ai créé un jeu sur navigateur. Mais qui peut y jouer, pour le moment&nbsp;?
 
-Uniquement moi, en fait&nbsp;! Et à condition d'avoir un environnement de développement ouvert et de lancer un serveur local avec `vite` (l'outil de build de Vue.js) pour servir le contenu web. Ce jeu ne remplit pas une partie du contrat : il n'est pas disponible en ligne, utilisable par n'importe qui.
+Uniquement moi, en fait&nbsp;! Et à condition d'avoir un environnement de développement ouvert et de lancer un serveur local avec `vite` (l'outil de build de Vue.js) pour servir le contenu web. **Ce jeu ne remplit pas une partie (essentielle) du contrat** : il n'est pas disponible en ligne et utilisable par n'importe qui.
 
 Et c'est une condition importante. Car il n'y a rien de plus démotivant que de travailler sur un projet seul, sans _feedback_. Lorsque je commencerai à avoir quelque chose d'utilisable, je veux que des joueurs y jouent&nbsp;! Je veux qu'ils me disent si c'est bien, si ça avance dans la bonne direction, qu'ils me donnent des idées. Ne serait-ce qu'un petit message «&nbsp;_Eh, c'est prometteur ton jeu. Préviens-moi quand tu auras avancé_&nbsp;».
 
@@ -35,7 +36,7 @@ Je vais donc faire un tour sur la [documentation officielle](https://pages.githu
 
 Il n'y a vraiment pas besoin de grand chose&nbsp;!&nbsp;🙂
 
-- Je me crée une adresse Gmail dédiée au jeu (ça me servira le jour où je voudrai collecter des feedbacks ou assurer un support)
+- Je me crée une adresse Gmail dédiée au jeu (ça me servira le jour où je voudrai collecter des avis d'utilisateurs ou assurer un support)
 - Avec cette adresse, je crée un compte GitHub dédié
 - Je crée un dépôt avec le nom adapté
 - J'y dépose la version distribuable de mon application Vue.js
@@ -50,7 +51,7 @@ J'ai un nom de domaine `pokemon-triad.github.io` prêt à l'emploi. Et mon jeu t
 
 # Tic tac toe !
 
-Maintenant que je suis en mesure de déployer très facilement le jeu en ligne, je me repenche sur la _marche_ suivante. Admettons que je ne m'attaque pas directement au _Triple Triad_. Comment identifier l'étape suivante&nbsp;?
+Maintenant que je suis en mesure de déployer très facilement le jeu en ligne, je me repenche sur la _marche_ suivante. Admettons que je ne m'attaque pas directement au _Triple Triad_&nbsp;: comment identifier l'étape suivante&nbsp;?
 
 Je fais le bilan de ce que j'ai déjà : un jeu à 2 joueurs, avec un gagnant et un perdant. Mais il ne se joue qu'en une seule action&nbsp;! Un unique choix de l'utilisateur et le jeu est déjà terminé. Dans le _Triple Triad_, les joueurs jouent chacun à leur tour, jusqu'à ce que l'ensemble des cartes soient posées. Et l'issue du jeu n'est calculée qu'à la fin.
 
@@ -62,9 +63,9 @@ Coder ce jeu nécessiterait&nbsp;:
 
 - de passer d'un tour unique, simultané pour les 2 joueurs, à un jeu en plusieurs tours, avec alternance entre les deux joueurs
 - de développer une IA plus "intelligente", qui réalise un choix à partir de données d'entrées (l'état actuel de la grille de morpion)
-- de détecter la fin de la partie lorsque certaines conditions sont remplies, et d'en déterminer l'issue (victoire, défaite ou égalité)
+- de détecter la fin de la partie lorsque certaines conditions sont remplies, et d'en déterminer l'issue&nbsp;: victoire, défaite ou égalité
 
-J'aurai de toute façon besoin de tout cela dans le jeu final. Donc cela me paraît être une bonne _prochaine étape_. Go&nbsp;!&nbsp;🔥
+J'aurai de toute façon besoin de tout cela dans le jeu final. Donc **cela me paraît être une bonne prochaine étape**. Go&nbsp;!&nbsp;🔥
 
 🕐... 🕑... 🕒...
 
@@ -74,9 +75,9 @@ Principale difficulté rencontrée, qui me paraît évidente maintenant mais que
 
 Lorsque je lance le jeu via ma classe `Game`, je ne peux pas dérouler les tours de jeu un par un dans une bête boucle `for`. Car un de mes deux joueurs interagit via une IHM&nbsp;! Par conséquent, le programme doit _attendre_ l'action de ce joueur pour pouvoir se dérouler (problème que je n'avais pas pour le _pierre, feuille, ciseaux_ car il n'y a qu'un seul tour de jeu).
 
-J'ai donc ressorti les `Promise`, ce qui entraîne généralement un petit délai de réalisation... 😅.
+J'ai donc ressorti les `Promise`... 😅.
 
-J'aurais pu "tricher" en pilotant l'exécution des tours de jeu depuis l'extérieur de la classe `Game`. Mais cela m'aurait probablement amené à piloter le jeu depuis la couche de présentation, ce qui n'est pas du tout la philosophie que je souhaite appliquer.
+J'aurais pu "tricher" en pilotant l'exécution des tours de jeu depuis l'IHM. Mais cela m'aurait probablement amené à piloter le jeu depuis la couche de présentation, ce qui n'est pas du tout la philosophie que je souhaite appliquer&nbsp;!
 
 J'y ai passé un peu plus de temps que je ne l'espérais, mais ça fonctionne&nbsp;:
 
@@ -86,4 +87,4 @@ Bon, j'ai fait des concessions sur l'intelligence de l'IA : elle joue au hasard 
 
 J'ai donc un jeu en ligne, où un utilisateur peut jouer en plusieurs tours contre une IA : objectif atteint&nbsp;!&nbsp;✅
 
-<a class="navigation next" href="{% link _posts/2023/2023-09-26-developper-jeu-mode-agile-episode-4.md %}">Développer un jeu en mode agile - Épisode 4</a>
+<a class="navigation next" href="{% link _posts/2023/2023-09-26-developper-jeu-mode-agile-episode-4.md %}">Lire la suite</a>

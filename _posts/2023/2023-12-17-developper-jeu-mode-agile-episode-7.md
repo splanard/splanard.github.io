@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Développer un jeu en mode agile - Épisode 7"
+title: "Développer un jeu en mode agile - Épisode 7 : Reprise du projet sur les chapeaux de roue"
 date: 2023-12-17 09:00:00 +0100
 tags: article dev game-design
+category: pokemon-triad
 ---
 
 # Welcome&nbsp;!
@@ -50,6 +51,8 @@ Dorénavant, à la fin de chaque partie, en cas de victoire, le joueur peut choi
 En termes de _gameplay_, c'est l'ajout le plus intéressant depuis longtemps sur le jeu. À tel point qu'en ajoutant encore de nouvelles cartes et zones à explorer, **la version actuelle pourrait constituer un MVP**&nbsp;!
 
 Et, grâce à toutes les étapes préparatoires précédentes, tous les petits ajouts réalisés ces dernières semaines, cette étape ne m'a pris _que_ `2h` supplémentaires.
+
+Cela illustre pleinement **l'importance de découper les fonctionnalités en blocs les plus petits possible**&nbsp;! Si je n'avais pas fait cet effort, si la quantité de travail pour implémenter la fonctionnalité complète ne m'avait pas fait peur, j'aurais peut-être abandonné en cours de route, après 5, 8, 10 ou 15h de travail sans ajout de valeur concret.
 
 Suite au déploiement de cette nouvelle version, j'ai ensuite passé environ `1h` à débuguer des petits problèmes (dont un assez impactant pour la jouabilité : le composant qui permet d'acquérir une nouvelle carte ne s'affichait pas sur la version déployée&nbsp;😅) et à réaliser de petites améliorations graphiques.
 
@@ -115,4 +118,4 @@ J'ai marqué avec un tag `mvp` certains éléments de la liste qui me paraîssen
 
 Il en reste du travail...&nbsp;😥
 
-<a class="navigation next" href="{% link _posts/2024/2024-05-29-developper-jeu-mode-agile-episode-8.md %}">Développer un jeu en mode agile - Épisode 8</a>
+<a class="navigation next" href="{% link _posts/2024/2024-05-29-developper-jeu-mode-agile-episode-8.md %}">Lire la suite</a>

@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Développer un jeu en mode agile - Épisode 6"
+title: "Développer un jeu en mode agile - Épisode 6 : Contre-temps et petites marches..."
 date: 2023-10-30 09:00:00 +0100
 tags: article dev game-design
+category: pokemon-triad
 ---
 
 # Oupsi&nbsp;!
@@ -23,7 +24,7 @@ Et donc le compte GitHub, dont j'ai également oublié le mot de passe (parce qu
 
 La loose.&nbsp;😥
 
-Je dois me retaper la création d'un nouveau compte Gmail, puis d'un nouveau compte GitHub. Et j'ai donc un nouvel environnement de déploiement : http://pokemontriad.github.io.
+Je dois me créer un nouveau compte Gmail, puis un nouveau compte GitHub. Et j'ai donc un nouvel environnement de déploiement : https://pokemontriad.github.io.
 
 > Quantité de travail (perdue) : 1h...
 
@@ -39,7 +40,7 @@ Mais mon cerveau continue de réfléchir en tâche de fond...&nbsp;⚙
 
 Et la notion de _niveau_ apparaît&nbsp;!
 
-Si les rencontres du joueur sont complètement aléatoires, il est fort probable qu'il soit confronté à des cartes dont les valeurs sont très hautes. Et que, même face à la faible intelligence de l'IA, il perde souvent. Il faut donc des niveaux de difficulté croissante. Donc des niveaux dans lesquels le set de cartes de l'adversaire est choisi aléatoirement parmi une sous-sélection pré-configurée.
+Si les rencontres du joueur sont complètement aléatoires dès le départ, il est fort probable qu'il soit rapidement confronté à des cartes dont les valeurs sont très hautes. Et que, même face à la faible intelligence de l'IA, il perde souvent. Il faut donc des niveaux de difficulté croissante. Donc des niveaux dans lesquels le set de cartes de l'adversaire est choisi aléatoirement parmi une sous-sélection pré-configurée.
 
 De plus, le fait de rencontrer des pokémons différents dans différentes zones colle très bien avec l'esprit du jeu&nbsp;!
 
@@ -47,7 +48,7 @@ Je peux donc commencer à travailler sur ces niveaux de difficulté. Et il se tr
 
 Et la marche est tout de suite beaucoup moins importante&nbsp;!!
 
-Le joueur ne pourra pas encore acquérir de nouveaux pokémons, certes. Mais il pourra arpenter différentes zones, pour des affrontements de difficulté croissante.
+Le joueur ne pourra pas encore acquérir de nouvelles cartes, certes. Mais il pourra arpenter différentes zones, pour des affrontements de difficulté croissante.
 
 La quantité de travail me semble raisonnable.
 
@@ -57,9 +58,9 @@ Donc c'est parti&nbsp;!!&nbsp;🔥
 
 > Quantité de travail : 4h, soit maintenant 28h au total (ça commence à faire&nbsp;!)
 
-Pour une marche censée être moins haute, il m'aura quand même fallu 4h de travail.
+Pour une marche censée être moins haute, il m'aura quand même fallu 4h de travail.&nbsp;🥵
 
-Je me rends compte que 4h, c'est un peu la taille critique d'une nouvelle fonctionnalité. C'est une durée que j'ai du mal à caser dans mon emploi du temps pour réussir à la traiter en 2-3 jours maximum (je ne veux pas que les fonctionnalités traînent trop longtemps... depuis le temps que je vous en parle, vous devez commencer à bien cerner le petit démon qui me guette&nbsp;😈).
+Je me rends compte que 4h, c'est un peu la **taille critique d'une nouvelle fonctionnalité**. C'est une durée que j'ai du mal à caser dans mon emploi du temps pour réussir à la traiter en 2-3 jours maximum (je ne veux pas que les fonctionnalités traînent trop longtemps... depuis le temps que je vous en parle, vous devez commencer à bien cerner le petit démon qui me guette&nbsp;😈).
 
 - `3h` pour la partie "moteur de jeu" + l'intégration à l'IHM existante&nbsp;: modéliser une répartition de probabilités d'apparition, réaliser un choix aléatoire pondéré par ces probabilités, modéliser une zone d'exploration, créer le composant de sélection d'une zone et gérer son interaction avec les autres (entre autres, le composant qui affiche le plateau de jeu n'est maintenant plus responsable que de la gestion d'une unique partie&nbsp;: c'est un composant parent qui gère les actions "rejouer" ou "changer de zone").
 
@@ -71,4 +72,4 @@ Et voilà le résultat&nbsp;:
 
 Les pokémons rencontrés varient d'une zone à l'autre, rendant les parties légèrement différentes. Mais toujours pas très difficiles, pour être honnête...&nbsp;😅
 
-<a class="navigation next" href="{% link _posts/2023/2023-12-17-developper-jeu-mode-agile-episode-7.md %}">Développer un jeu en mode agile - Épisode 7</a>
+<a class="navigation next" href="{% link _posts/2023/2023-12-17-developper-jeu-mode-agile-episode-7.md %}">Lire la suite</a>
