@@ -37,4 +37,12 @@
       }
     }
   }
+  .posts-with-category {
+    li {
+      margin-bottom: 12px;
+      .post-link {
+        font-size: 18px;
+      }
+    }
+  }
 }

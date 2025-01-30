@@ -1,0 +1,13 @@
+<div class="posts-with-category">
+  <ul class="post-list">
+    {%- assign filtered_posts = site.posts | where_exp:"post", "post.categories
+    contains include.content" | reverse -%} {%- for post in filtered_posts -%}
+    <li>
+      <a class="post-link" href="{{ post.url | relative_url }}">
+        {%- assign title_parts = post.title | split: " - " -%} {{ title_parts[1]
+        | escape }}
+      </a>
+    </li>
+    {%- endfor -%}
+  </ul>
+</div>
