@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "La « stack technique » : pourquoi les développeurs y attachent-ils autant d'importance ?"
-date: 2020-10-12 09:00:00 +0100
+date: 2020-10-12 09:00:00 +0200
 tags: article tech
 ---
 

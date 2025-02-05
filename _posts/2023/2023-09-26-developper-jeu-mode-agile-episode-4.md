@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Développer un jeu en mode agile - Épisode 4 : Première version fonctionnelle"
-date: 2023-09-26 09:00:00 +0100
+date: 2023-09-26 09:00:00 +0200
 tags: article dev game-design
 category: pokemon-triad
 ---

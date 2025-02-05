@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Développer un jeu en mode agile - Épisode 3 : Première mise en prod"
-date: 2023-09-15 09:00:00 +0100
+date: 2023-09-15 09:00:00 +0200
 tags: article dev game-design
 category: pokemon-triad
 ---
