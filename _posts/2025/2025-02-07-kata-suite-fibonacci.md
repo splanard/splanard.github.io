@@ -1,0 +1,418 @@
+---
+layout: post
+title: "Kata : la suite de Fibonacci"
+date: 2025-02-07 09:00:00 +0100
+tags: article dev kata
+---
+
+Je ne vous refais pas un laïus sur ce que sont les katas de code et leur intérêt&nbsp;: vous trouverez ces informations très facilement via une recherche Internet.
+
+Lorsque je cherche à découvrir des approches de katas différentes, d'autres personnes, je suis souvent frustré de trouver des contenus sous 2 formes&nbsp;:
+
+- une **vidéo**&nbsp;: je n'aime pas les vidéos... Le rythme y est toujours soit trop lent, soit trop rapide. On ne peut pas réfléchir et analyser à son rythme. Généralement, j'ai toujours tendance à les écouter en vitesse 1,5 ou à sauter entièrement certains passages. Et je suis obligé de faire _pause_ à certains moment pour visualiser le code, qui est de plus rarement très lisible au format vidéo. Bref, j'aime paaaaaaaaaas les vidéos&nbsp;😑 (pour ce type de contenu&nbsp;: je regarde des films comme tout le monde...).
+
+- le **code final**, sur un dépôt GitHub par exemple&nbsp;: on perd alors toute la démarche&nbsp;! Or, dans ce genre d'exercice, c'est la démarche qui est, à mes yeux, la plus importante.
+
+Donc, ici, je posterai de temps en temps des déroulements de kata... **entièrement à l'écrit&nbsp;!** Vous pourrez ainsi entrer, pour un temps, dans ma tête, mais à votre rythme&nbsp;😉.
+
+_Et pour ceux qui n'aimeraient pas lire... allez regarder des vidéos&nbsp;!!_&nbsp;😅
+
+# La suite de Fibonacci
+
+Pour celles et ceux qui ne connaîtraient pas cette suite, qui est tout de même un grand classique, [Wikipédia](https://fr.wikipedia.org/wiki/Suite_de_Fibonacci) vous dira tout ce que vous avez besoin/envie de savoir.
+
+Mais, pour résumer, c'est **une suite de nombre entiers dans laquelle chaque nombre est la somme des deux nombres qui le précèdent**.
+
+Le but de ce kata est de construire une méthode qui renvoie un terme donné de la suite en lui fournissant l'indice souhaité. Voici les premiers termes :
+
+|                                       Indice | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
+| -------------------------------------------: | --- | --- | --- | --- | --- | --- | --- | --- |
+| Terme de la suite de Fibonacci correspondant | 0   | 1   | 1   | 2   | 3   | 5   | 8   | 13  |
+
+Dans ce post, lorsque je mentionnerai `F(n)` ce serait pour parler du terme d'indice `n` de la suite de Fibonacci. Par exemple, la valeur de `F(6)` est `8`.
+
+# Stack technique
+
+Pour ce kata, j'utiliserai le langage **Java** (ça ne sera pas toujours le cas&nbsp;: j'aime bien varier les langages), **JUnit** comme framework de test et **AssertJ** pour les assertions.
+
+# C'est parti !
+
+Par habitude, je réalise le kata en TDD. Je crée donc ma classe de test, et j'écris mon premier cas de test&nbsp;:
+
+```java
+public class FibonacciSequenceTest {
+
+  private FibonacciSequence fibonacciSequence = new FibonacciSequence();
+
+  @Test
+  public void returnZero(){
+    assertThat(fibonacciSequence.getNumberWithIndex(0)).isEqualTo(0);
+  }
+
+}
+```
+
+Pour que le code compile, je crée ma classe `FibonacciSequence`, avec une méthode `getNumberWithIndex`. Et, pour respecter le TDD à la lettre, je fais tout d'abord renvoyer `-1` à ma méthode.
+
+Je lance mon test, KO. J'ai mon test cassant, je peux passer à l'implémentation&nbsp;:
+
+```java
+public class FibonacciSequence {
+
+  public int getNumberWithIndex(int index) {
+    return 0;
+  }
+
+}
+```
+
+Test OK.
+
+Le test suivant vient de façon assez naturelle&nbsp;:
+
+```java
+@Test
+public void returnOne(){
+  assertThat(fibonacciSequence.getNumberWithIndex(1)).isEqualTo(1);
+}
+```
+
+Je lance, test KO, j'implémente, mon test passe (_je ne vais pas vous refaire tout le cycle à chaque fois, vous avez compris l'idée..._).
+
+```java
+public class FibonacciSequence {
+
+  public int getNumberWithIndex(int index) {
+    if( index == 0 ){
+      return 0;
+    }
+    return 1;
+  }
+
+}
+```
+
+Puis je réfléchis, et je me rends compte qu'il existe une implémentation plus simple. Je profite donc de la phase de _refactoring_ pour simplifier mon code&nbsp;:
+
+```java
+public class FibonacciSequence {
+
+  public int getNumberWithIndex(int index) {
+    return index;
+  }
+
+}
+```
+
+Je pourrais continuer sur la lancée et écrire le prochain test de la même façon.
+
+```java
+@Test
+public void returnOneAgain(){
+  assertThat(fibonacciSequence.getNumberWithIndex(2)).isEqualTo(1);
+}
+```
+
+Mais je me rends bien compte que le nommage des test va vite me poser problème... Et que mon nommage actuel ne reflète pas franchement un comportement. Je décide donc de reprendre d'abord mes 2 premiers tests, pour les fusionner.
+
+```java
+@Test
+public void arbitraryValuesForTheFirstTwoNumbers(){
+  assertThat(fibonacciSequence.getNumberWithIndex(0)).isEqualTo(0);
+  assertThat(fibonacciSequence.getNumberWithIndex(1)).isEqualTo(1);
+}
+```
+
+_Attention, **le refactoring des tests est une opération délicate**. Elle est parfois nécessaire, pour simplifier les tests ou les rendre plus lisibles. Mais les tests représentent également mon filet de sécurité anti-régression. Je dois donc veiller à ne pas perdre de fonctionnalité en cours de route&nbsp;! Ne pas altérer la couverture fonctionnnelle de mes tests, ce qui reviendrait à "trouer" mon filet de sécurité._
+
+J'en profite pour évacuer le terme «&nbsp;return&nbsp;» parce que je me rends compte que tous mes tests risquent de commencer de la même façon... autant éviter la répétition.
+
+J'en reviens maintenant à l'ajout du prochain test. Et je vais essayer de le formuler comme une nouvelle fonctionnalité. Jusqu'à présent, la fonctionnalité implémentée était «&nbsp;renvoyer des nombres arbitaires&nbsp;». Maintenant, je veux ajouter la nouvelle fonctionnalité «&nbsp;renvoyer la somme des 2 termes précédents&nbsp;».
+
+Et pour éviter de repasser à nouveau par la case «&nbsp;_je fais renvoyer une valeur fixe à ma méthode, car c'est l'implémentation la plus simple_&nbsp;», j'ajoute volontairement plusieurs assertions, pour être sûr de devoir implémenter **la logique de la suite de Fibonacci** pour faire passer le test.
+
+```java
+@Test
+public void sumOfTheTwoPreviousNumbers(){
+  assertThat(fibonacciSequence.getNumberWithIndex(2)).isEqualTo(1);
+  assertThat(fibonacciSequence.getNumberWithIndex(5)).isEqualTo(5);
+  assertThat(fibonacciSequence.getNumberWithIndex(8)).isEqualTo(21);
+}
+```
+
+Je choisis des valeurs de façon à éviter les faux positifs&nbsp;: si j'avais pris uniquement `F(2)=1` et `F(3)=2`, l'implémentation `return index - 1;` aurait passé ces 3 cas de test. Et `F(4)=3` ne m'aurait pas aidé à sortir de ce travers... 😅 Dans tous les cas, j'en serais donc arrivé à devoir ajouter d'autres cas de test... Je prends un raccourci.
+
+Une fois mes tests relancés, et mon second test KO, je passe à l'implémentation. Et voilà le résultat&nbsp;:
+
+```java
+public int getNumberWithIndex(int index) {
+  if( index <= 1 ) {
+    return index;
+  }
+  return this.getNumberWithIndex(index - 1) + this.getNumberWithIndex(index - 2);
+}
+```
+
+Ma méthode se rappelle elle-même pour obtenir les 2 termes d'indices inférieurs. J'en arrive naturellement à utiliser la **récursivité**.
+
+Mes tests passent. ✅
+
+Bon, bah... j'ai fini, non&nbsp;?&nbsp;😁
+
+Pas tout à fait...
+
+# Analyse des performances
+
+Je sais que **la récursivité est dangereuse pour les performances**. Je décide donc de faire un petit _benchmark_ de ma méthode (vous l'aurez deviné, lorsque je code ce benchmark dans le cadre de cet article, je sais déjà qu'il y a un problème 😅. Mais vérifier les performance de méthodes de calcul, en particulier lorsque la récursivité est impliquée, ça peut être une bonne idée).
+
+Grâce à une classe `Main` dont je vous épargne le code, je décide donc d'afficher les 51 premiers termes de la suite (de `F(0)` à `F(50)`) et d'enregistrer le temps de calcul pour chaque étape.
+
+```
+F(0)=0 (0ms)
+F(1)=1 (0ms)
+F(2)=1 (0ms)
+F(3)=2 (0ms)
+...
+F(25)=75025 (0ms)
+F(26)=121393 (0ms)
+F(27)=196418 (0ms)
+F(28)=317811 (4ms)
+F(29)=514229 (2ms)
+F(30)=832040 (4ms) 😎
+F(31)=1346269 (5ms)
+F(32)=2178309 (10ms)
+F(33)=3524578 (17ms)
+F(34)=5702887 (22ms)
+F(35)=9227465 (49ms) 🤔
+F(36)=14930352 (58ms)
+F(37)=24157817 (112ms)
+F(38)=39088169 (165ms)
+F(39)=63245986 (266ms)
+F(40)=102334155 (398ms)
+F(41)=165580141 (616ms)
+F(42)=267914296 (997ms) 😩
+F(43)=433494437 (2,643s)
+F(44)=701408733 (4,564s)
+F(45)=1134903170 (6,839s)
+F(46)=1836311903 (10,264s)
+F(47)=2971215073 (17,421s)
+F(48)=4807526976 (27,595s)
+F(49)=7778742049 (43,492s)
+F(50)=12586269025 (49,449s) 😱
+```
+
+Jusqu'à `F(30)`, on peut considérer que le calcul est instantané. Les quelques millisecondes enregistrées sont parfois juste du _bruit_ lié à l'activité de ma machine.
+
+En revanche, pour les termes suivants, on constate que le temps de calcul augmente assez rapidement ! À `F(42)` on avoisine la seconde. À `F(46)` on dépasse les 10 secondes. Et à `F(50)` **on s'approche de la minute de temps de calcul**.
+
+Pas cool.
+
+D'ailleurs... constatez-vous quelque chose de rigolo (mais logique) concernant les temps de calculs&nbsp;?&nbsp;🙂
+
+Ils suivent la même logique que la suite de Fibonacci&nbsp;! Le temps de calcul d'un terme correspond à peu près à la somme du temps de calcul des 2 précédents (mis à part pour le dernier terme où il semble y avoir eu un coup d'accélérateur...). Et, si on y réfléchit un peu, c'est parfaitement normal.
+
+À cause de la récursivité, en appelant `F(n)`, j'appelle 1 fois `F(n-1)` et 1 fois `F(n-2)`. Mais `F(n-1)` va également appeler `F(n-2)` (qui sera donc exécuté 2 fois) et `F(n-3)` (qui a déjà été appelé 2 fois auparavant par les 2 appels à `F(n-2)`), etc. Cela crée une chaîne d'appel pyramidale, dans laquelle le nombre d'appels suit également la suite de Fibonacci :
+
+| Appel    | Nombre de fois |
+| -------- | -------------- |
+| `F(n)`   | 1              |
+| `F(n-1)` | 1              |
+| `F(n-2)` | 2              |
+| `F(n-3)` | 3              |
+| `F(n-4)` | 5              |
+| `F(n-5)` | 8              |
+| `F(n-6)` | 13             |
+| ...      | ...            |
+
+Il sera donc très compliqué pour ce code de fournir des termes d'indice élevé 🥺, car **des temps de traitements de plusieurs minutes** (ou bien plus, si l'indice est élevé) **sont rarement envisageables**...
+
+Comment faire pour corriger cela&nbsp;?&nbsp;🤔
+
+# Mémoïsation / programmation dynamique
+
+Pour améliorer le temps de traitement, on va chercher à éviter de re-calculer plusieurs fois chaque terme. On va donc stocker les valeurs calculées au fur et à mesure&nbsp;!
+
+Cette façon de faire s'apparente à une _mise en cache_ et on peut la retrouver sous le nom de [**mémoïsation**](https://fr.wikipedia.org/wiki/M%C3%A9mo%C3%AFsation). C'est une technique très utilisée en [**programmation dynamique**](https://fr.wikipedia.org/wiki/Programmation_dynamique).
+
+Cette fois, je n'ajoute pas de test. Mon code n'aura aucune nouvelle fonctionnalité, je vais juste essayer de faire en sorte qu'il fasse la même chose, mais plus vite. Mes tests remplissent désormais leur **fonction de non-régression**&nbsp;: mon filet de sécurité.
+
+Je reprends donc le code de ma classe, tout en étant guidé par l'exécution des tests, qui m'indique si la couverture fonctionnelle de mon code a été dégradée ou non.
+
+Et j'en arrive à cette nouvelle implémentation&nbsp;:
+
+```java
+public class FibonacciSequence {
+
+  private final ArrayList<Long> internalMemory = new ArrayList<>(Arrays.asList(0L, 1L));
+
+  public long getNumberWithIndex(int index) {
+    if( internalMemory.size() >= index + 1 ) {
+      return internalMemory.get(index);
+    }
+
+    long result = this.getNumberWithIndex(index - 1) + this.getNumberWithIndex(index - 2);
+    internalMemory.add(result);
+
+    return result;
+  }
+
+}
+```
+
+J'ai choisi de stocker les valeurs intermédiaires dans une propriété de la classe. De cette façon, des appels successifs à la méthode d'une même instance bénéficieront d'un gain de temps additionnel, car certaines valeurs sont déjà calculées et stockées en mémoire.
+
+Si on souhaite économier la mémoire, et la libérer dès que le calcul est terminé (moyennement le passage du _garbage collector_... mais on n'est pas là pour parler du fonctionnement de la JVM), on peut tout à fait choisir de stocker les valeurs intermédiaires dans une variable locale, à l'intérieur de la méthode.&nbsp;😉
+
+Pour m'assurer que cette nouvelle implémentation résoud mon problème de performance, je relance mon script de diagnostic. Le résultat est sans appel&nbsp;:
+
+```
+F(0)=0 (0ms)
+F(1)=1 (0ms)
+...
+F(25)=75025 (0ms)
+F(26)=121393 (0ms)
+F(27)=196418 (0ms)
+F(28)=317811 (0ms)
+F(29)=514229 (0ms)
+F(30)=832040 (0ms)
+F(31)=1346269 (0ms)
+F(32)=2178309 (0ms)
+F(33)=3524578 (0ms)
+F(34)=5702887 (0ms)
+F(35)=9227465 (0ms)
+F(36)=14930352 (0ms)
+F(37)=24157817 (0ms)
+F(38)=39088169 (0ms)
+F(39)=63245986 (0ms)
+F(40)=102334155 (0ms)
+F(41)=165580141 (0ms)
+F(42)=267914296 (0ms)
+F(43)=433494437 (0ms)
+F(44)=701408733 (0ms)
+F(45)=1134903170 (0ms)
+F(46)=1836311903 (0ms)
+F(47)=2971215073 (0ms)
+F(48)=4807526976 (0ms)
+F(49)=7778742049 (0ms)
+F(50)=12586269025 (0ms)
+```
+
+L'exécution est maintenant quasi-instantané, même à l'indice 50&nbsp;!
+
+Par curiosité, j'ai augmenté l'indice maximum, pour voir à quel moment le calcul commence à prendre un temps non négligeable. **Même à l'indice 10000, le temps d'exécution est encore de 3-4 millisecondes**. (Et, très rapidement, pour avoir des résultats cohérents, j'ai été obligé de modifier mon implémentation pour utiliser `BigInteger` au lieu de `long`...).
+
+Par la suite, compte-tenu de la technique de mémoïsation utilisée, je me rends compte que **l'utilisation de la récursivité n'est même plus nécessaire**&nbsp;.
+
+```java
+public class FibonacciSequence {
+
+  private final ArrayList<BigInteger> internalMemory = new ArrayList<>(
+    Arrays.asList(BigInteger.valueOf(0L), BigInteger.valueOf(1L))
+  );
+
+  public BigInteger getNumberWithIndex(int index) {
+    this.fillInternalMemoryWithAllNumbersUpTo(index);
+    return internalMemory.get(index);
+  }
+
+  private void fillInternalMemoryWithAllNumbersUpTo(int index) {
+    for( int i = internalMemory.size(); i <= index; i++ ) {
+      BigInteger newValue = internalMemory.get(i-1).add(internalMemory.get(i-2));
+      internalMemory.add(newValue);
+    }
+  }
+
+}
+```
+
+# Problème de mémoire&nbsp;!
+
+Par acquis de conscience, je tente des valeurs d'indice très haute.
+
+Le calcul de `F(20000)` prend environ 25ms, `F(50000)` environ 80ms, `F(100000)` entre 250ms et 300ms.
+
+Pour la beauté du truc, je tente `F(1000000)`...
+
+```
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+```
+
+Oups&nbsp;!&nbsp;😅
+
+C'est le problème de la technique de mémoïsation&nbsp;: elle consomme de la mémoire. Ici, j'ai stocké tellement de nombres dans la mémoire interne de ma classe, le process Java n'a plus assez de mémoire disponible pour tout stocker.
+
+Je pourrais ajouter de la mémoire au lancement du process, mais ça ne serait que repousser le problème.
+
+Je reprends donc mon implémentation, toujours couvert par mes tests, pour trouver une solution viable même pour des indices très élevés.
+
+```java
+public class FibonacciSequence {
+
+  public BigInteger getNumberWithIndex(int index) {
+    if( index <= 1 ){
+      return BigInteger.valueOf(index);
+    }
+
+    BigInteger[] previousValues = new BigInteger[] {
+      BigInteger.valueOf(0L), BigInteger.valueOf(1L)
+    };
+    for(int i = 2; i <= index; i++) {
+      BigInteger newValue = previousValues[0].add(previousValues[1]);
+      previousValues[0] = previousValues[1];
+      previousValues[1] = newValue;
+    }
+
+    return previousValues[1];
+  }
+
+}
+```
+
+Pour régler le problème de mémoire, je ne stocke que les deux valeurs précédentes, que j'écrase au fur et à mesure.
+
+Est-ce que ça fonctionne&nbsp;?
+
+```
+(0ms) F(50)=12586269025
+(18ms) F(20000)=2531162323...
+(47ms) F(50000)=1077773489...
+(190ms) F(100000)=2597406934...
+(14,975s) F(1000000)=1953282128...
+```
+
+Il semblerait que oui&nbsp;😋
+
+_Au passage,_ `F(1000000)` _est un nombre qui possède presque 209000 chiffres..._
+
+On observe même un gain de performance sur les indices testés précédemment. Je ne sais pas l'expliquer. C'est peut-être lié à la nature et la taille des objets Java manipulés : un tableau de taille 2 est peut-être plus rapide à manipuler qu'une liste de centaines de milliers de valeurs... Ça paraît plausible en tout cas.
+
+Bon, cette fois, je crois que je vais m'arrêter là&nbsp;!&nbsp;✅
+
+Il est possible qu'avec des indices encore plus élevés je rencontre encore de nouveaux problèmes. Mais ça sera pour une prochaine fois&nbsp;: ma machine fatigue&nbsp;🥵 (et moi aussi).
+
+À bientôt&nbsp;!&nbsp;😉
+
+# Annexe
+
+Pour la forme, je vous remets la classe de test complète.
+
+```java
+public class FibonacciSequenceTest {
+
+  private final FibonacciSequence fibonacciSequence = new FibonacciSequence();
+
+  @Test
+  public void arbitraryValuesForTheFirstTwoNumbers(){
+    assertThat(fibonacciSequence.getNumberWithIndex(0)).isEqualTo(0);
+    assertThat(fibonacciSequence.getNumberWithIndex(1)).isEqualTo(1);
+  }
+
+  @Test
+  public void sumOfTheTwoPreviousNumbers(){
+    assertThat(fibonacciSequence.getNumberWithIndex(2)).isEqualTo(1);
+    assertThat(fibonacciSequence.getNumberWithIndex(5)).isEqualTo(5);
+    assertThat(fibonacciSequence.getNumberWithIndex(8)).isEqualTo(21);
+  }
+
+}
+```
