@@ -18,7 +18,7 @@ author: Sébastien Planard
 email: sebastien.planard@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Je m'appelle Sébastien et je suis développeur web depuis 13 ans.
-  Ce site est mon espace d'expression. J'y parle de dev, bien évidemment.
+  Ce site est mon espace d'écriture. J'y parle de dev, bien évidemment.
   Mais également de vulgarisation scientifique ou de sujets de société.
   Bonne lecture ! 😉
 baseurl: "" # the subpath of your site, e.g. /blog
