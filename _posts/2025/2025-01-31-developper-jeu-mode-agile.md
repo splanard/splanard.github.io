@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Développer un jeu en mode agile"
-date: 2024-01-29 09:00:00 +0100
+date: 2025-01-31 09:00:00 +0100
 tags: article dev game-design
 ---
 
