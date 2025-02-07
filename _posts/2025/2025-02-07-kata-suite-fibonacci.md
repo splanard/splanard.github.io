@@ -9,7 +9,7 @@ Je ne vous refais pas un laïus sur ce que sont les katas de code et leur intér
 
 Lorsque je cherche à découvrir des approches de katas différentes, d'autres personnes, je suis souvent frustré de trouver des contenus sous 2 formes&nbsp;:
 
-- une **vidéo**&nbsp;: je n'aime pas les vidéos... Le rythme y est toujours soit trop lent, soit trop rapide. On ne peut pas réfléchir et analyser à son rythme. Généralement, j'ai toujours tendance à les écouter en vitesse 1,5 ou à sauter entièrement certains passages. Et je suis obligé de faire _pause_ à certains moment pour visualiser le code, qui est de plus rarement très lisible au format vidéo. Bref, j'aime paaaaaaaaaas les vidéos&nbsp;😑 (pour ce type de contenu&nbsp;: je regarde des films comme tout le monde...).
+- une **vidéo**&nbsp;: je n'aime pas les vidéos... Le rythme y est toujours soit trop lent, soit trop rapide. On ne peut pas réfléchir et analyser à son rythme. Généralement, j'ai toujours tendance à les écouter en vitesse 1,5 ou à sauter entièrement certains passages. Et je suis obligé de faire _pause_ à certains moment pour visualiser le code, qui est rarement très lisible au format vidéo. Bref, j'aime paaaaaaaaaas les vidéos&nbsp;😑 (pour ce type de contenu&nbsp;: je regarde des films comme tout le monde...).
 
 - le **code final**, sur un dépôt GitHub par exemple&nbsp;: on perd alors toute la démarche&nbsp;! Or, dans ce genre d'exercice, c'est la démarche qui est, à mes yeux, la plus importante.
 
@@ -29,7 +29,7 @@ Le but de ce kata est de construire une méthode qui renvoie un terme donné de 
 | -------------------------------------------: | --- | --- | --- | --- | --- | --- | --- | --- |
 | Terme de la suite de Fibonacci correspondant | 0   | 1   | 1   | 2   | 3   | 5   | 8   | 13  |
 
-Dans ce post, lorsque je mentionnerai `F(n)` ce serait pour parler du terme d'indice `n` de la suite de Fibonacci. Par exemple, la valeur de `F(6)` est `8`.
+Dans ce post, lorsque je mentionnerai `F(n)` ce sera pour parler du terme d'indice `n` de la suite de Fibonacci. Par exemple, la valeur de `F(6)` est `8`.
 
 # Stack technique
 
@@ -113,7 +113,7 @@ public void returnOneAgain(){
 }
 ```
 
-Mais je me rends bien compte que le nommage des test va vite me poser problème... Et que mon nommage actuel ne reflète pas franchement un comportement. Je décide donc de reprendre d'abord mes 2 premiers tests, pour les fusionner.
+Mais je me rends bien compte que le nommage des tests va vite me poser problème... Et que mon nommage actuel ne reflète pas franchement un comportement. Je décide donc de reprendre d'abord mes 2 premiers tests, pour les fusionner.
 
 ```java
 @Test
@@ -125,9 +125,9 @@ public void arbitraryValuesForTheFirstTwoNumbers(){
 
 _Attention, **le refactoring des tests est une opération délicate**. Elle est parfois nécessaire, pour simplifier les tests ou les rendre plus lisibles. Mais les tests représentent également mon filet de sécurité anti-régression. Je dois donc veiller à ne pas perdre de fonctionnalité en cours de route&nbsp;! Ne pas altérer la couverture fonctionnnelle de mes tests, ce qui reviendrait à "trouer" mon filet de sécurité._
 
-J'en profite pour évacuer le terme «&nbsp;return&nbsp;» parce que je me rends compte que tous mes tests risquent de commencer de la même façon... autant éviter la répétition.
+J'en profite pour évacuer le terme «&nbsp;return&nbsp;» du nom du test, parce que je me rends compte que tous mes tests risquent de commencer de la même façon... autant éviter la répétition.
 
-J'en reviens maintenant à l'ajout du prochain test. Et je vais essayer de le formuler comme une nouvelle fonctionnalité. Jusqu'à présent, la fonctionnalité implémentée était «&nbsp;renvoyer des nombres arbitaires&nbsp;». Maintenant, je veux ajouter la nouvelle fonctionnalité «&nbsp;renvoyer la somme des 2 termes précédents&nbsp;».
+J'en reviens maintenant à l'ajout du prochain test. Et je vais essayer de le formuler comme une nouvelle fonctionnalité. Pour le moment, la fonctionnalité implémentée est «&nbsp;renvoyer des nombres arbitaires&nbsp;». Maintenant, je veux ajouter la nouvelle fonctionnalité «&nbsp;renvoyer la somme des 2 termes précédents&nbsp;».
 
 Et pour éviter de repasser à nouveau par la case «&nbsp;_je fais renvoyer une valeur fixe à ma méthode, car c'est l'implémentation la plus simple_&nbsp;», j'ajoute volontairement plusieurs assertions, pour être sûr de devoir implémenter **la logique de la suite de Fibonacci** pour faire passer le test.
 
@@ -140,7 +140,7 @@ public void sumOfTheTwoPreviousNumbers(){
 }
 ```
 
-Je choisis des valeurs de façon à éviter les faux positifs&nbsp;: si j'avais pris uniquement `F(2)=1` et `F(3)=2`, l'implémentation `return index - 1;` aurait passé ces 3 cas de test. Et `F(4)=3` ne m'aurait pas aidé à sortir de ce travers... 😅 Dans tous les cas, j'en serais donc arrivé à devoir ajouter d'autres cas de test... Je prends un raccourci.
+Je choisis des valeurs de façon à éviter les faux positifs&nbsp;: si j'avais pris uniquement `F(2)=1` et `F(3)=2`, l'implémentation `return index - 1;` aurait passé ces cas de test. Et `F(4)=3` ne m'aurait pas aidé à sortir de ce travers... 😅 Donc, dans tous les cas, j'en serais arrivé à devoir ajouter d'autres cas de test que ceux-là... Je prends un raccourci.
 
 Une fois mes tests relancés, et mon second test KO, je passe à l'implémentation. Et voilà le résultat&nbsp;:
 
@@ -163,9 +163,9 @@ Pas tout à fait...
 
 # Analyse des performances
 
-Je sais que **la récursivité est dangereuse pour les performances**. Je décide donc de faire un petit _benchmark_ de ma méthode (vous l'aurez deviné, lorsque je code ce benchmark dans le cadre de cet article, je sais déjà qu'il y a un problème 😅. Mais vérifier les performance de méthodes de calcul, en particulier lorsque la récursivité est impliquée, ça peut être une bonne idée).
+Je sais que **la récursivité est dangereuse pour les performances**. Je décide donc de faire un petit _benchmark_ de ma méthode (vous l'aurez deviné, lorsque je crée mon code de test des performances dans le cadre de cet article, je sais déjà qu'il y a un problème 😅. Mais vérifier les performance de méthodes de calcul, en particulier lorsque la récursivité est impliquée, ça peut être une bonne idée).
 
-Grâce à une classe `Main` dont je vous épargne le code, je décide donc d'afficher les 51 premiers termes de la suite (de `F(0)` à `F(50)`) et d'enregistrer le temps de calcul pour chaque étape.
+Grâce à une classe `Main`, dont je vous épargne le code, je décide donc d'afficher les 51 premiers termes de la suite, de `F(0)` à `F(50)`, et d'enregistrer le temps de calcul pour chaque étape.
 
 ```
 F(0)=0 (0ms)
@@ -384,11 +384,11 @@ Il semblerait que oui&nbsp;😋
 
 _Au passage,_ `F(1000000)` _est un nombre qui possède presque 209000 chiffres..._
 
-On observe même un gain de performance sur les indices testés précédemment. Je ne sais pas l'expliquer. C'est peut-être lié à la nature et la taille des objets Java manipulés : un tableau de taille 2 est peut-être plus rapide à manipuler qu'une liste de centaines de milliers de valeurs... Ça paraît plausible en tout cas.
+On observe même un gain de performance sur les indices testés précédemment. Je ne sais pas l'expliquer avec certitude. C'est peut-être lié à la nature et la taille des objets Java manipulés : un tableau de taille 2 est peut-être plus rapide à manipuler qu'une liste de centaines de milliers de valeurs... Ça paraît plausible en tout cas.
 
 Bon, cette fois, je crois que je vais m'arrêter là&nbsp;!&nbsp;✅
 
-Il est possible qu'avec des indices encore plus élevés je rencontre encore de nouveaux problèmes. Mais ça sera pour une prochaine fois&nbsp;: ma machine fatigue&nbsp;🥵 (et moi aussi).
+Il est possible qu'avec des indices encore plus élevés je rencontre de nouveaux problèmes. Mais ça sera pour une prochaine fois&nbsp;: ma machine fatigue&nbsp;🥵 (et moi aussi).
 
 À bientôt&nbsp;!&nbsp;😉
 
