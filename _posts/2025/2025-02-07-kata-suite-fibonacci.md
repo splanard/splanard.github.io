@@ -307,7 +307,7 @@ Par la suite, compte-tenu de la technique de mémoïsation utilisée, je me rend
 public class FibonacciSequence {
 
   private final ArrayList<BigInteger> internalMemory = new ArrayList<>(
-    Arrays.asList(BigInteger.valueOf(0L), BigInteger.valueOf(1L))
+    Arrays.asList(BigInteger.ZERO, BigInteger.ONE)
   );
 
   public BigInteger getNumberWithIndex(int index) {
@@ -353,9 +353,7 @@ public class FibonacciSequence {
       return BigInteger.valueOf(index);
     }
 
-    BigInteger[] previousValues = new BigInteger[] {
-      BigInteger.valueOf(0L), BigInteger.valueOf(1L)
-    };
+    BigInteger[] previousValues = new BigInteger[] { BigInteger.ZERO, BigInteger.ONE };
     for(int i = 2; i <= index; i++) {
       BigInteger newValue = previousValues[0].add(previousValues[1]);
       previousValues[0] = previousValues[1];
@@ -392,7 +390,9 @@ Il est possible qu'avec des indices encore plus élevés je rencontre de nouveau
 
 À bientôt&nbsp;!&nbsp;😉
 
-# Annexe
+# Annexes
+
+## Tests
 
 Pour la forme, je vous remets la classe de test complète.
 
@@ -414,5 +414,76 @@ public class FibonacciSequenceTest {
     assertThat(fibonacciSequence.getNumberWithIndex(8)).isEqualTo(21);
   }
 
+  @Test
+  public void handleVeryBigOutputNumbers() {
+    assertThat(fibonacciSequence.getNumberWithIndex(94)).isEqualTo(new BigInteger("19740274219868223167"));
+  }
+
 }
 ```
+
+## L'Ours _versus_ l'IA
+
+À force de voir tout le monde parler d'IA, je me dis qu'il faudrait peut-être que je m'y mette. Pour le moment, les utilisations de ChatGPT que j'ai pu observer ne m'ont pas pleinement convaincu. Mais c'est dans l'ère du temps, donc il est de mon devoir en tant que développeur, de mettre mon nez dedans (même si, pour le moment, je n'aime pas l'odeur)&nbsp;😓.
+
+J'ai donc testé le prompt suivant sur un modèle mini GPT-4o (gratuit, trouvé en ligne)&nbsp;:
+
+> Je souhaite que tu me donnes l'implémentation, avec le langage Java, d'une classe FibonacciSequence, possédant une méthode nommée getNumberWithIndex, qui renvoie le terme de la suite de Fibonnacci d'indice N lorsqu'on lui passe un entier N en paramètre.
+
+Le résultat ci-dessous&nbsp;:
+
+```java
+public class FibonacciSequence {
+
+    // Méthode pour obtenir le terme de la suite de Fibonacci à l'indice N
+    public int getNumberWithIndex(int N) {
+        if (N < 0) {
+            throw new IllegalArgumentException("L'indice ne peut pas être négatif.");
+        }
+        if (N == 0) {
+            return 0;
+        }
+        if (N == 1) {
+            return 1;
+        }
+
+        int a = 0; // F(0)
+        int b = 1; // F(1)
+        int fib = 0;
+
+        for (int i = 2; i <= N; i++) {
+            fib = a + b; // F(n) = F(n-1) + F(n-2)
+            a = b;      // Met à jour F(n-2)
+            b = fib;    // Met à jour F(n-1)
+        }
+
+        return fib; // Retourne F(N)
+    }
+
+    public static void main(String[] args) {
+        FibonacciSequence fibonacci = new FibonacciSequence();
+        int index = 10; // Exemple d'indice
+        System.out.println("Le terme de la suite de Fibonacci à l'indice " + index + " est : " + fibonacci.getNumberWithIndex(index));
+    }
+}
+```
+
+Plusieurs observations&nbsp;:
+
+- 👍 Le problème de performance est géré, rien à redire là-dessus. L'algorithme fourni est, à peu de choses près, le même que celui de mon implémentation finale (et je vous assure que je n'avais rien demandé au chatbot avant de faire mon implémentation&nbsp;: lors de l'écriture de cet article, c'est la première fois que je demande quoi que ce soit à ChatGPT&nbsp;😅)
+
+- 👍 Le cas à la marge du nombre négatif passé en paramètre est géré. Ce n'était pas demandé, mais on peut se dire «&nbsp;pourquoi pas&nbsp;»... Donc j'accorde ce point.
+
+- 👎 La méthode `main` n'était pas demandée. Et elle n'a rien à faire là.
+
+- 👎 Le nommage des variables est nul. Pour `N`, c'est de la faute de mon prompt, d'accord. Mais, pour le reste, c'est nul. J'aurais largement préféré des variables bien nommées, plutôt que des commentaires.
+
+- 👎 La problématique de la taille des nombres renvoyés à partir d'un certain indice n'est pas gérée. Je ne sais pas précisément à partir de quel indice ça pose problème, mais très rapidement, le type `int` ne sera plus adapté. Et le programme va planter.
+
+Bon, je débute avec cet outil. J'imagine qu'avec un prompt plus précis, des contraintes de qualité de code, etc. il doit être possible d'obtenir un meilleur résultat.
+
+Mais ce qui me chagrine, c'est que **si on utilise une IA générative en première approche, on n'a aucune idée de pourquoi on en arrive à cette implémentation**, des problématiques rencontrées en cours de route. Donc on n'apprend pas à s'en méfier, à les identifier plus tard dans un autre contexte.
+
+Je fais le bilan&nbsp;: l'IA a pensé à l'indice négatif, mais pas à la taille des nombres en sortie. L'algo reste bon. Pas de tests unitaires, mais je ne les ai pas demandés (j'y penserai la prochaine fois). Je concède une égalité pour cette fois, mais je me trouve clément.
+
+> OURS 1 - 1 IA
