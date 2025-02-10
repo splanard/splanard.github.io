@@ -113,7 +113,12 @@ public void returnOneAgain(){
 }
 ```
 
-Mais je me rends bien compte que le nommage des tests va vite me poser problème... Et que mon nommage actuel ne reflète pas franchement un comportement. Je décide donc de reprendre d'abord mes 2 premiers tests, pour les fusionner.
+Mais je me rends compte de deux choses&nbsp;:
+
+1. Le nommage des tests va vite me poser problème si je continue comme ça...
+2. Mon nommage actuel ne reflète pas un comportement.
+
+Je décide donc de reprendre d'abord mes 2 premiers tests, pour les fusionner.
 
 ```java
 @Test
@@ -127,7 +132,7 @@ _Attention, **le refactoring des tests est une opération délicate**. Elle est 
 
 J'en profite pour évacuer le terme «&nbsp;return&nbsp;» du nom du test, parce que je me rends compte que tous mes tests risquent de commencer de la même façon... autant éviter la répétition.
 
-J'en reviens maintenant à l'ajout du prochain test. Et je vais essayer de le formuler comme une nouvelle fonctionnalité. Pour le moment, la fonctionnalité implémentée est «&nbsp;renvoyer des nombres arbitaires&nbsp;». Maintenant, je veux ajouter la nouvelle fonctionnalité «&nbsp;renvoyer la somme des 2 termes précédents&nbsp;».
+J'en reviens maintenant à l'ajout du prochain test. Et je vais essayer de le formuler lui aussi de façon fonctionnelle. Pour le moment, la fonctionnalité implémentée est «&nbsp;renvoyer des nombres arbitaires&nbsp;». Maintenant, je veux ajouter la nouvelle fonctionnalité «&nbsp;renvoyer la somme des 2 termes précédents&nbsp;».
 
 Et pour éviter de repasser à nouveau par la case «&nbsp;_je fais renvoyer une valeur fixe à ma méthode, car c'est l'implémentation la plus simple_&nbsp;», j'ajoute volontairement plusieurs assertions, pour être sûr de devoir implémenter **la logique de la suite de Fibonacci** pour faire passer le test.
 
@@ -140,7 +145,9 @@ public void sumOfTheTwoPreviousNumbers(){
 }
 ```
 
-Je choisis des valeurs de façon à éviter les faux positifs&nbsp;: si j'avais pris uniquement `F(2)=1` et `F(3)=2`, l'implémentation `return index - 1;` aurait passé ces cas de test. Et `F(4)=3` ne m'aurait pas aidé à sortir de ce travers... 😅 Donc, dans tous les cas, j'en serais arrivé à devoir ajouter d'autres cas de test que ceux-là... Je prends un raccourci.
+Je choisis des valeurs de façon à éviter les faux positifs&nbsp;: si j'avais pris uniquement `F(2)=1` et `F(3)=2`, l'implémentation `return index - 1;` aurait passé ces cas de test. Et `F(4)=3` ne m'aurait pas aidé à sortir de ce travers...&nbsp;😅
+
+D'autre part, je sais que mes tests, une fois écrits, vont assurer la non-régression. Et je souhaite que cette non-régression soit robuste&nbsp;! Si, lors d'une opération de _refactoring_, j'introduis des erreurs par inadvertance, j'aimerais bien que mes tests me le signalent. Ayant identifié très rapidement le biais possible du `return index - 1`, j'évite de choisir ces cas de test. Je prends quelques raccourcis...
 
 Une fois mes tests relancés, et mon second test KO, je passe à l'implémentation. Et voilà le résultat&nbsp;:
 
@@ -155,7 +162,7 @@ public int getNumberWithIndex(int index) {
 
 Ma méthode se rappelle elle-même pour obtenir les 2 termes d'indices inférieurs. J'en arrive naturellement à utiliser la **récursivité**.
 
-Mes tests passent. ✅
+Mes tests passent.&nbsp;✅
 
 Bon, bah... j'ai fini, non&nbsp;?&nbsp;😁
 
@@ -163,7 +170,7 @@ Pas tout à fait...
 
 # Analyse des performances
 
-Je sais que **la récursivité est dangereuse pour les performances**. Je décide donc de faire un petit _benchmark_ de ma méthode (vous l'aurez deviné, lorsque je crée mon code de test des performances dans le cadre de cet article, je sais déjà qu'il y a un problème 😅. Mais vérifier les performance de méthodes de calcul, en particulier lorsque la récursivité est impliquée, ça peut être une bonne idée).
+Je sais que **la récursivité est dangereuse pour les performances**. Je décide donc de faire un petit _benchmark_ de ma méthode (vous l'aurez deviné, lorsque je crée mon code de test des performances dans le cadre de cet article, je sais déjà qu'il y a un problème&nbsp;😅. Mais vérifier les performances de méthodes de calcul, en particulier lorsque la récursivité est impliquée, ça peut être une bonne idée).
 
 Grâce à une classe `Main`, dont je vous épargne le code, je décide donc d'afficher les 51 premiers termes de la suite, de `F(0)` à `F(50)`, et d'enregistrer le temps de calcul pour chaque étape.
 
@@ -203,7 +210,9 @@ F(50)=12586269025 (49,449s) 😱
 
 Jusqu'à `F(30)`, on peut considérer que le calcul est instantané. Les quelques millisecondes enregistrées sont parfois juste du _bruit_ lié à l'activité de ma machine.
 
-En revanche, pour les termes suivants, on constate que le temps de calcul augmente assez rapidement ! À `F(42)` on avoisine la seconde. À `F(46)` on dépasse les 10 secondes. Et à `F(50)` **on s'approche de la minute de temps de calcul**.
+En revanche, pour les termes suivants, on constate que le temps de calcul augmente assez rapidement&nbsp;! À `F(42)` on avoisine la seconde. À `F(46)` on dépasse les 10 secondes. Et à `F(50)` **on s'approche de la minute de temps de calcul&nbsp;!**
+
+Si je tente `F(100)`, le ventilateur de mon PC va s'emballer. Et il est presque sûr que je doive terminer manuellement le process Java que je viens de lancer... (Je vous laisse essayer chez vous. Gardez l'extincteur à proximité quand même&nbsp;😅).
 
 Pas cool.
 
@@ -224,7 +233,7 @@ Ils suivent la même logique que la suite de Fibonacci&nbsp;! Le temps de calcul
 | `F(n-6)` | 13             |
 | ...      | ...            |
 
-Il sera donc très compliqué pour ce code de fournir des termes d'indice élevé 🥺, car **des temps de traitements de plusieurs minutes** (ou bien plus, si l'indice est élevé) **sont rarement envisageables**...
+Il sera donc très compliqué pour ce code de fournir des termes d'indice élevé 🥺, car **des temps de traitements de plusieurs minutes** (ou bien plus, si l'indice est très élevé) **sont rarement envisageables**...
 
 Comment faire pour corriger cela&nbsp;?&nbsp;🤔
 
@@ -388,7 +397,29 @@ Bon, cette fois, je crois que je vais m'arrêter là&nbsp;!&nbsp;✅
 
 Il est possible qu'avec des indices encore plus élevés je rencontre de nouveaux problèmes. Mais ça sera pour une prochaine fois&nbsp;: ma machine fatigue&nbsp;🥵 (et moi aussi).
 
-À bientôt&nbsp;!&nbsp;😉
+# Conclusion
+
+Comme tout kata, l'exercice peut être abordé de différentes façons. Et tout est _criticable_ (au sens où on peut en débattre).
+
+## Nommage
+
+Initialement, j'ai choisi de créer une classe qui _représente_ la suite de Fibonacci, et qui peut me fournir à la demande un terme d'indice N. J'aurais d'ailleurs pu nommer la méthode `getNumber(N)`, `getTerm(N)` ou `getTermOfIndex(N)`... On peut discuter sans fin du nommage des méthodes, pour les rendre les plus explicites possible pour le plus grand nombre.
+
+D'ailleurs, je ne l'ai pas fait dans le cadre de ce kata, mais dans certains cas complexes j'aime bien **sonder des personnes au hasard**, pas forcément des développeurs, **pour vérifier si elles comprennent ce que fait une méthode** en leur donnant implement sa signature (nom, type de retour, paramètres).
+
+## Stateless ?
+
+J'aurais également pu (et j'ai hésité à le faire à un moment donné, mais... j'ai eu la flemme 😅) changer complètement le paradigme d'utilisation de ma classe et basculer dans un mode _stateless_ : `new FibonacciNumer(N).getValue()`. Un collègue me l'a d'ailleurs suggéré à la lecture des sections précédentes. J'aurais également pu décider de partir là-dessus dès la première itération.
+
+Ce pourrait être une stratégie différente, à tester lors d'une prochaine itération de ce kata&nbsp;!&nbsp;🙂
+
+## L'aspect incrémental
+
+Ce que j'apprécie en particulier dans ce kata, c'est le fait de découvrir des problématiques différentes, itération après itération.
+
+Les premières itérations sont clairement centrées autour du TDD, du nommage des éléments, de faire apparaître des notions métier et la logique de la suite de Fibonacci. Comment parvenir à une solution fonctionnelle et élégante, en étant guidé par les tests&nbsp;?
+
+Mais dans une deuxième phase, on laisse un peu de côté le TDD et on se frotte à des problèmes plus "terre à terre"&nbsp;:le problème de performance, les soucis de mémoire, etc. On constate alors que les tests qui ont servi de guide lors de la première phase changent de fonction, pour devenir les garants de la non-régression.
 
 # Annexes
 
