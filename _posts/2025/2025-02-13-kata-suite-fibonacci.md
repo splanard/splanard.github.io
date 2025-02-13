@@ -405,11 +405,11 @@ Comme tout kata, l'exercice peut être abordé de différentes façons. Et tout 
 
 Initialement, j'ai choisi de créer une classe qui _représente_ la suite de Fibonacci, et qui peut me fournir à la demande un terme d'indice N. J'aurais d'ailleurs pu nommer la méthode `getNumber(N)`, `getTerm(N)` ou `getTermOfIndex(N)`... On peut discuter sans fin du nommage des méthodes, pour les rendre les plus explicites possible pour le plus grand nombre.
 
-D'ailleurs, je ne l'ai pas fait dans le cadre de ce kata, mais dans certains cas complexes j'aime bien **sonder des personnes au hasard**, pas forcément des développeurs, **pour vérifier si elles comprennent ce que fait une méthode** en leur donnant implement sa signature (nom, type de retour, paramètres).
+D'ailleurs, je ne l'ai pas fait dans le cadre de ce kata, mais dans certains cas complexes j'aime bien **sonder des personnes au hasard**, pas forcément des développeurs, **pour vérifier si elles comprennent ce que fait une méthode** en leur donnant simplement sa signature (nom, type de retour, paramètres).
 
 ## Stateless ?
 
-J'aurais également pu (et j'ai hésité à le faire à un moment donné, mais... j'ai eu la flemme 😅) changer complètement le paradigme d'utilisation de ma classe et basculer dans un mode _stateless_ : `new FibonacciNumer(N).getValue()`. Un collègue me l'a d'ailleurs suggéré à la lecture des sections précédentes de cet article. J'aurais également pu décider de partir là-dessus dès la première itération.
+J'aurais également pu (et j'ai hésité à le faire à un moment donné, mais... j'ai eu la flemme 😅) changer complètement le paradigme d'utilisation de ma classe et basculer dans un mode _stateless_ : `new FibonacciNumber(N).getValue()`. Un collègue me l'a d'ailleurs suggéré à la lecture des sections précédentes de cet article. J'aurais également pu décider de partir là-dessus dès la première itération.
 
 Ce pourrait être une stratégie différente, à tester lors d'une prochaine itération de ce kata.&nbsp;🙂 Mais il y a de fortes chances que l'algo final ressemble beaucoup...
 
@@ -459,7 +459,7 @@ public class FibonacciSequenceTest {
 
 J'ai donc testé le prompt suivant sur un modèle mini GPT-4o (gratuit, trouvé en ligne)&nbsp;:
 
-> Je souhaite que tu me donnes l'implémentation, avec le langage Java, d'une classe FibonacciSequence, possédant une méthode nommée getNumberWithIndex, qui renvoie le terme de la suite de Fibonnacci d'indice N lorsqu'on lui passe un entier N en paramètre.
+> Je souhaite que tu me donnes l'implémentation, avec le langage Java, d'une classe FibonacciSequence, possédant une méthode nommée getNumberWithIndex, qui renvoie le terme de la suite de Fibonacci d'indice N lorsqu'on lui passe un entier N en paramètre.
 
 Le résultat ci-dessous&nbsp;:
 
