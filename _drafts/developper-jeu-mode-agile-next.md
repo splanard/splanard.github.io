@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Développer un jeu en mode agile : suite..."
+tags: article dev kata
+---
+
 ## Notes
 
 Sujets intéressants à évoquer ensuite :
