@@ -33,3 +33,4 @@ Si cela donnait envie aux plus juniors d'entre vous de réaliser ces katas, il e
 _Et pour celles et ceux qui n'aimeraient pas lire... allez regarder des vidéos&nbsp;!!_&nbsp;😅
 
 - <a href="{% link _posts/2025/2025-02-13-kata-suite-fibonacci.md %}">La suite de Fibonacci</a>
+- <a href="{% link _posts/2025/2025-03-10-kata-bowling.md %}">Bowling</a>
