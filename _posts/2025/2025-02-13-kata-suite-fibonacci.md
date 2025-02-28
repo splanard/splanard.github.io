@@ -5,20 +5,6 @@ date: 2025-02-13 22:00:00 +0100
 tags: article dev kata
 ---
 
-Je ne vous refais pas un laïus sur ce que sont les katas de code et leur intérêt&nbsp;: vous trouverez ces informations très facilement via une recherche Internet.
-
-Lorsque je cherche à découvrir des approches de katas différentes, d'autres personnes, je suis souvent frustré de trouver des contenus sous 2 formes&nbsp;:
-
-- une **vidéo**&nbsp;: je n'aime pas les vidéos... Le rythme y est toujours soit trop lent, soit trop rapide. On ne peut pas réfléchir et analyser à son rythme. Généralement, j'ai toujours tendance à les écouter en vitesse 1,5 ou à sauter entièrement certains passages. Et je suis obligé de faire _pause_ à certains moment pour visualiser le code, qui est rarement très lisible au format vidéo. Bref, j'aime paaaaaaaaaas les vidéos&nbsp;😑 (pour ce type de contenu&nbsp;: je regarde des films comme tout le monde...).
-
-- le **code final**, sur un dépôt GitHub par exemple&nbsp;: on perd alors toute la démarche&nbsp;! Or, dans ce genre d'exercice, c'est la démarche qui est, à mes yeux, la plus importante.
-
-Donc, ici, je posterai de temps en temps des déroulements de kata... **entièrement à l'écrit&nbsp;!** Vous pourrez ainsi entrer, pour un temps, dans ma tête, mais à votre rythme&nbsp;😉.
-
-_Et pour ceux qui n'aimeraient pas lire... allez regarder des vidéos&nbsp;!!_&nbsp;😅
-
-# La suite de Fibonacci
-
 Pour celles et ceux qui ne connaîtraient pas cette suite, qui est tout de même un grand classique, [Wikipédia](https://fr.wikipedia.org/wiki/Suite_de_Fibonacci) vous dira tout ce que vous avez besoin/envie de savoir.
 
 Mais, pour résumer, c'est **une suite de nombre entiers dans laquelle chaque nombre est la somme des deux nombres qui le précèdent**.
