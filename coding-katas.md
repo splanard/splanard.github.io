@@ -18,7 +18,7 @@ Bref, je n'aime paaaaaaaaaas les vidéos&nbsp;😑 (pour ce type de contenu, hei
 
 ## Le code final
 
-On peut le trouve sur un dépôt GitHub, par exemple.
+On peut le trouver sur un dépôt GitHub, par exemple.
 
 On perd alors toute la démarche&nbsp;! Or, dans ce genre d'exercice, c'est la démarche qui est, à mes yeux, la plus importante.
 
