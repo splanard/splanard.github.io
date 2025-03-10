@@ -26,6 +26,10 @@ url: "https://splanard.github.io" # the base hostname & protocol for your site, 
 # twitter_username: jekyllrb
 github_username: splanard
 
+# Theme settings
+minima:
+  date_format: "%d/%m/%Y"
+
 # Build settings
 markdown: kramdown
 theme: minima
