@@ -11,7 +11,7 @@ Les règles de décompte des points sont pourtant relativement simples. La seule
 
 Ce kata de code, qu'un collègue m'a récemment proposé de faire avec lui, est [disponible sur Coding Dojo dans sa forme initiale](https://codingdojo.org/kata/Bowling/).
 
-Je vous décris ici l'approche que j'ai eue, telle qu'elle s'est construite au fur et à mesure du déroulement du kata. J'aurais pu optiminser certaines choses après coup, corriger certaines erreurs que j'ai faites en cours de route, pour paraître "meilleur" dès la première approche&nbsp;✨. Mais j'aurais sacrifié la démarche intellectuelle (ainsi que l'honnêteté&nbsp;🙄) sur l'autel de l'image finale. Et c'est l'inverse de ce que je souhaite proposer, ici, lorsque je décris mes katas.
+La semaine dernière, je l'ai refait, seul. Je vous décris ici l'approche que j'ai eue, telle qu'elle s'est construite au fur et à mesure du déroulement du kata. J'aurais pu optiminser certaines choses après coup, corriger certaines erreurs que j'ai faites en cours de route, pour paraître "meilleur" dès la première approche&nbsp;✨. Mais j'aurais sacrifié la démarche intellectuelle (ainsi que l'honnêteté&nbsp;🙄) sur l'autel de l'image finale. Et c'est l'inverse de ce que je souhaite proposer, ici, lorsque je décris mes katas.
 
 C'est parti.
 
