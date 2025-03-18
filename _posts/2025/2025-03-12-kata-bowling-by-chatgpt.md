@@ -169,7 +169,7 @@ Aïe&nbsp;!&nbsp;😅
 
 Bon, il va falloir débuguer tout ça... Comment se fait-il que les tests unitaires fournis par l'IA échouent&nbsp;?
 
-**Cas 1 : ni spare, ni strike**
+### Cas 1 : ni spare, ni strike
 
 ```ts
 it("calculates score for a game with no strikes or spares", () => {
@@ -195,7 +195,7 @@ it("calculates score for a game with no strikes or spares", () => {
 });
 ```
 
-**Cas 2 : spares**
+### Cas 2 : spares
 
 ```ts
 it("calculates score for a game with spares", () => {
@@ -215,7 +215,7 @@ it("calculates score for a game with spares", () => {
 });
 ```
 
-**Cas 3 : strikes**
+### Cas 3 : strikes
 
 ```ts
 it("calculates score for a game with strikes", () => {
@@ -233,7 +233,7 @@ it("calculates score for a game with strikes", () => {
 });
 ```
 
-**Cas 4 : strikes & spares**
+### Cas 4 : strikes & spares
 
 ```ts
 it("calculates score for a game with mixed strikes and spares", () => {
@@ -255,7 +255,7 @@ it("calculates score for a game with mixed strikes and spares", () => {
 
 Enfin&nbsp;!
 
-**Conclusion**
+### Conclusion
 
 L'algo est robuste, mais les tests générés étaient vraiment nuls...&nbsp;😒
 
