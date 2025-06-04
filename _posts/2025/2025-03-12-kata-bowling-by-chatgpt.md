@@ -186,7 +186,7 @@ Mais tout cela n'explique pas pourquoi le test échoue...
 
 Par contre, 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 0 + 1 + 2 = 48. D'où sort le 45 de l'assertion&nbsp;? Pas la moindre idée.
 
-Le corrige donc ce premier test. Et avec des valeurs correctes, le test passe&nbsp;:
+Le corrige donc ce premier test (lancers et assertion). Avec des valeurs correctes, le test passe&nbsp;:
 
 ```ts
 it("calculates score for a game with no strikes or spares", () => {
@@ -204,7 +204,7 @@ it("calculates score for a game with spares", () => {
 });
 ```
 
-Bon, il y a aussi un strike dans le jeu de connées de ce cas de test... pas idéal, compte-tenu de l'intention de test annoncée&nbsp;😒
+Bon, il y a aussi un strike dans le jeu de données de ce cas de test... pas idéal, compte-tenu de l'intention de test annoncée&nbsp;😒
 
 J'ajoute un zéro pour supprimer le strike (et ajouter un spare un peu spécial par la même occasion), je recompte les points, et ça passe&nbsp;:
 
@@ -324,7 +324,7 @@ Dans tous les cas, je constate bien que **la langue n'a pas d'impact** sur le r�
 
 ## Variation mineure dans les règles
 
-Je décide d'éclaicir le point soulevé précédemment&nbsp;: **les règles mentionnées dans l'énoncé sont-elles lues/interprétées par l'IA à partir du moment où elle identifie qu'il s'agit d'un jeu connu&nbsp;?**
+Je décide d'éclaicir le point soulevé précédemment&nbsp;: _les règles mentionnées dans l'énoncé sont-elles réellement lues et interprétées par l'IA, à partir du moment où elle identifie qu'il s'agit d'un jeu connu&nbsp;?_
 
 Je tente de modifier légèrement l'énoncé, en remplaçant simplement quelques valeurs dans l'énoncé (le nombre de points pour un "spare" est remplacé par 12 + le lancer suivant, le nombre de points pour un "strike" est remplacé par 15 + les 2 lancers suivants).
 
@@ -342,7 +342,7 @@ Rien qu'à formuler la question, je suis à peu près convaincu que non. Mais il
 
 ### Prompt
 
-Voilà donc le prompt modifié.
+Ci-dessous, le prompt modifié. La trame est similiare à celle du tout premier prompt&nbsp;: des phrases de consignes en français au début et à la fin, mais un énoncé en anglais.
 
 _En utilisant le langage TypeScript, je souhaite que tu crées un programme qui répond à l'énoncé suivant (qui est en anglais)._
 
@@ -366,17 +366,17 @@ _Here are some things that the program will not do:_
 
 _Le code produit doit être entièrement en anglais. Génère également les tests unitaires associés aux éléments de code produits en utilisant la syntaxe de la librairie Vitest (describe, it, expect)._
 
-La trame est la même que le tout premier : des phrases de consignes en français au début et à la fin, mais un énoncé en anglais.
+Ici, **plus question de bowling&nbsp;! Cette fois, on joue au "Frog Tumble"**, un jeu qui consiste à dégommer des grenouilles. Les notions de "spare" et "strike" existent à l'identique, à l'exception qu'elles s'appellent "snake" et "heron" (les prédateurs des grenouilles, selon l'inspiration du moment...).
 
-En revanche, **plus question de bowling&nbsp;! Cette fois, on joue au "Frog Tumble"**, un jeu qui consiste à dégommer des grenouilles. Les notions de "spare" et "strike" existent à l'identique, à l'exception qu'elles s'appellent "snake" et "heron" (les prédateurs des grenouilles, selon l'inspiration du moment...).
+À part ces quelques variations des termes employés, les règles du jeu sont **exactement les mêmes que celle du bowling**&nbsp;!
 
 > Pourquoi des grenouilles&nbsp;?!...
 
 Je ne sais pas&nbsp;😅
 
-### Et c'est le drame...
+### Et là, c'est le drame...
 
-Et voilà ce que me répond ChatGPT&nbsp;:
+Voilà ce que me répond ChatGPT&nbsp;:
 
 ```ts
 type Turn = number[];
@@ -540,7 +540,7 @@ C'est une conclusion alternative&nbsp;: **l'IA ne réfléchit pas, elle ne fait 
 
 _L'IA peut également réaliser des tâches "bêtes", automatiques, plus rapidement qu'un humain. Mais ce n'était pas le sujet ici._
 
-Dans tous les cas, je suis **très déçu par les tests unitaires générés par l'IA**, peu importe la forme de l'énoncé. Ils étaient systématiquement médiocres (en grande partie car ils ne validaient pas le bon comportement). Et cette incapacité à interpréter la logique pour la traduire en cas de test l'empêche de vérifier le résultat qu'elle fournit...&nbsp;🫤
+Dans tous les cas, je suis **très déçu par les tests unitaires générés par l'IA**, peu importe la forme de l'énoncé. Ils étaient **systématiquement médiocres** (en grande partie car ils ne validaient pas le bon comportement). Et cette incapacité à interpréter la logique pour la traduire en cas de test l'empêche de vérifier le résultat qu'elle fournit...&nbsp;🫤
 
 Il existe des solutions basées sur l'IA plus performantes qu'un ChatGPT 4o-mini... Mais je pense tout de même que leurs forces et faiblesses sont similaires.
 
