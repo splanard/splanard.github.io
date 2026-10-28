@@ -14,3 +14,12 @@ Sujets intéressants à évoquer ensuite :
 - Le maintien en condition opérationnelle & la rétro-compatibilité (format de la sauvegarde notamment)
 - La limite de taille du cookie (ma base de données... 😱)
 - Le backlog qui grossit plus vite que les issues ne sont traitées, et l'aspect un peu démotivant
+- l'IA pour améliorer le design
+
+## Prochain épisode
+
+Apparence du site, le potentiel apporté par l'IA générative !
+
+- carousel de l'évolution du design du site au fil des versions
+- paragraphe sur l'apport de l'IA générative et la façon d'aborder le prompt  
+  (reprendre la discussion avec EurIA pour m'entraîenr à parler avec Leonardo.ai)

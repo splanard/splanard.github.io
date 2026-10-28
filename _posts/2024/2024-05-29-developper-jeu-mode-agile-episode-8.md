@@ -68,7 +68,7 @@ Au-delà de 3h, j'arrive rarement à réaliser l'ensemble en une seule session. 
 
 ## Une application fonctionnelle à tout moment
 
-L'application est "en prod", au sens où elle est accessible en ligne, depuis n'importe quel navigateur, depuis le tout premier jour.
+L'application est "en prod", au sens où elle est **accessible en ligne**, depuis n'importe quel navigateur, **depuis le tout premier jour**.
 
 Le fait de voir les choses avancer, de pouvoir systématiquement déployer et utiliser le résultat sur mon téléphone est **incroyablement stimulant**&nbsp;! Je vois immédiatement le résultat. Je peux m'amuser avec l'application, la tester un peu en conditions réelles. Je peux également la montrer à d'autres personnes, pour avoir leur opinion, voir s'ils arrivent à l'utiliser (ce qui m'a très rapidement amené à constater que le tutoriel était indispensable pour le MVP&nbsp;😅).
 
