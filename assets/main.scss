@@ -4,6 +4,53 @@
 // @see https://github.com/jekyll/minima/tree/v2.5.1?tab=readme-ov-file#customization
 @import "minima";
 
+body {
+  background-color: #dfefff;
+  font-size: 18px;
+}
+
+.site-header {
+  border: none;
+  min-height: auto;
+
+  .wrapper {
+    background-color: white;
+    border-bottom: solid 1px grey;
+
+    .site-nav .page-link {
+      background-color: lightgrey;
+      border-radius: 4px;
+      padding: 4px 12px;
+
+      &:hover {
+        background-color: grey;
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.site-footer {
+  border: none;
+  padding: 0;
+
+  .wrapper {
+    background-color: white;
+    border-top: solid 1px grey;
+    padding: 30px 30px 15px 30px;
+  }
+}
+
+.page-content {
+  padding: 0;
+
+  .wrapper {
+    background-color: white;
+    padding: 30px;
+  }
+}
+
 .post-header {
   .post-title {
     line-height: 1.2;
