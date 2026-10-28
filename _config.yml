@@ -25,6 +25,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://splanard.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
 github_username: splanard
+google_analytics: G-FBTP7Y62H3
 
 # Theme settings
 minima:
