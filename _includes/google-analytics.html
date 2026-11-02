@@ -1,0 +1,19 @@
+<!-- Google tag (gtag.js), chargé seulement après acceptation du bandeau -->
+<script>
+  if (document.cookie.split("; ").indexOf("cookie-notice-deny=true") < 0) {
+    console.log("Google Tag Manager → OK");
+    var gtagScript = document.createElement("script");
+    gtagScript.async = true;
+    gtagScript.src = "https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}";
+    document.head.appendChild(gtagScript);
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () {
+      dataLayer.push(arguments);
+    };
+    gtag("js", new Date());
+    gtag("config", "{{ site.google_analytics }}");
+  } else {
+    console.log("Google Tag Manager → Denied");
+  }
+</script>
